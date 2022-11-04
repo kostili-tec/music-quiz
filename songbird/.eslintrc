@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+      "eslint:recommended",
+      "eslint-config-airbnb/base"
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+  },
+  "rules": {
+    "no-console": "warn",
+    "indent": ["warn", 2, {
+        "SwitchCase": 1
+    }]
+  }
+}
