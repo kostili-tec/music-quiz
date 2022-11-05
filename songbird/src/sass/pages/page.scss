@@ -51,6 +51,7 @@ body {
   padding: 20px;
   height: 200px;
   gap: 40px;
+  margin-top: 1.5rem;
 }
 
 // .birds-img, 
@@ -121,4 +122,50 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
+}
+
+.chose-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.chose-container__left, 
+.chose-container__right{
+  width: 45%;
+  background-color: #303030;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 5px;
+}
+.chose-container__right{
+  padding: 1rem;
+}
+
+.birds-li {
+  height: 3rem;
+  line-height: 3rem;
+  padding-left: 1.5rem;
+  border-bottom: 1px solid rgb(128, 128, 128);
+  color: rgb(128, 128, 128);
+  cursor: pointer;
+  &:last-child {
+    border: none;
+  }
+  &:hover {
+    background-color:rgb(128, 128, 128);
+  }
+}
+
+.birds-li__span {
+  color: white;
+}
+
+.next-button {
+  width: 100%;
+  height: 3rem;
+  color: white;
+  background-color: #303030;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 5px;
+  margin-top: 1.5rem;
 }
