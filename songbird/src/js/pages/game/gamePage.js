@@ -1,4 +1,4 @@
-import { createNewAudio, playButtonEvent, renderNextPage } from '../../controller/control';
+import { createNewAudio, playButtonEvent, renderNextPage, updateProgress } from '../../controller/control';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -55,6 +55,7 @@ const createPlayer = (storeObj) => {
 
   const progresBar = document.createElement('div');
   progresBar.classList.add('progres-bar');
+  progresBar.addEventListener('click', updateProgress);
   const progress = document.createElement('div');
   progress.classList.add('progress');
   progresBar.append(progress);
