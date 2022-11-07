@@ -1,6 +1,4 @@
-
-import { birdsObj } from "../../store/store";
-import { createNewAudio, playButtonEvent } from "../../controller/control";
+import { createNewAudio, playButtonEvent, renderNextPage } from '../../controller/control';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -8,7 +6,7 @@ const createLi = (text) => {
   spanLi.textContent = text;
   li.append(spanLi);
   return li;
-}
+};
 
 const createListBirds = () => {
   const namesArr = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
@@ -19,9 +17,9 @@ const createListBirds = () => {
 
   namesArr.forEach((el) => ul.append(createLi(el)));
   return ul;
-}
+};
 
-const createPlayer = (birdsObj) => {
+const createPlayer = (storeObj) => {
   const playerContainer = document.createElement('div');
   playerContainer.classList.add('player-container');
 
@@ -39,7 +37,7 @@ const createPlayer = (birdsObj) => {
   const audioPlayer = document.createElement('div');
   audioPlayer.classList.add('audio-container');
 
-  const audio = createNewAudio(birdsObj);
+  const audio = createNewAudio(storeObj);
   playerContainer.append(audio);
 
   const playButton = document.createElement('button');
@@ -48,7 +46,7 @@ const createPlayer = (birdsObj) => {
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg');
-  svg.innerHTML = `<use xlink:href="./copies/sprite.svg#pause-button"></use>`;
+  svg.innerHTML = '<use xlink:href="./copies/sprite.svg#pause-button"></use>';
 
   playButton.append(svg);
 
@@ -87,15 +85,15 @@ const createPlayer = (birdsObj) => {
   playerContainer.append(birdImg, rightContainer);
 
   return playerContainer;
-}
+};
 
-const createLeftContainer = (birdsObj) => {
+const createLeftContainer = (storeObj) => {
   const leftContainer = document.createElement('div');
   leftContainer.classList.add('chose-container__left');
 
   const birdsUl = document.createElement('birds-ul');
   birdsUl.classList.add('birds-ul');
-  birdsObj.forEach((el) => {
+  storeObj.forEach((el) => {
     const liBird = document.createElement('li');
     liBird.classList.add('birds-li');
     const textSpan = document.createElement('span');
@@ -103,10 +101,10 @@ const createLeftContainer = (birdsObj) => {
     textSpan.textContent = el.name;
     liBird.append(textSpan);
     birdsUl.append(liBird);
-  })
+  });
   leftContainer.append(birdsUl);
   return leftContainer;
-}
+};
 
 const createRightContainer = () => {
   const rightContainer = document.createElement('div');
@@ -116,34 +114,37 @@ const createRightContainer = () => {
   pInfo1.textContent = 'Послушайте плеер.';
   pInfo2.textContent = 'Выберите птицу из списка';
   rightContainer.append(pInfo1, pInfo2);
-  return rightContainer;  
-}
+  return rightContainer;
+};
 
-const createChoseContainer = (birdsObj) => {
+const createChoseContainer = (storeObj) => {
   const choseContainer = document.createElement('div');
   choseContainer.classList.add('chose-container');
-  choseContainer.append(createLeftContainer(birdsObj), createRightContainer());
+  choseContainer.append(createLeftContainer(storeObj), createRightContainer());
   return choseContainer;
-}
+};
 
 const createNextButton = () => {
-  const nextButton = document.createElement('button');
+  const nextButton = document.createElement('a');
+  nextButton.href = '#start';
+  renderNextPage(nextButton);
   nextButton.classList.add('next-button');
   nextButton.textContent = 'Next Level';
   return nextButton;
-}
+};
 
-export const createGame = (birdsObj, mainId = 'start') => {
+export const createGame = (storeObj, mainId = 'start') => {
   const main = document.createElement('main');
   main.classList.add('main');
+  main.id = mainId;
   const navContainer = document.createElement('div');
   navContainer.classList.add('birds-container');
   navContainer.append(createListBirds());
 
-  const audioPlayer = createPlayer(birdsObj);
-  const choseCont = createChoseContainer(birdsObj);
+  const audioPlayer = createPlayer(storeObj);
+  const choseCont = createChoseContainer(storeObj);
   const nextButton = createNextButton();
 
   main.append(navContainer, audioPlayer, choseCont, nextButton);
   document.body.append(main);
-}
+};

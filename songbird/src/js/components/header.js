@@ -1,6 +1,9 @@
 export const createHeader = () => {
   const header = document.createElement('header');
   header.classList.add('header');
+  const linkHeader = document.createElement('a');
+  linkHeader.classList.add('link-header');
+  linkHeader.href = '#start';
   const h1 = document.createElement('h1');
   h1.textContent = 'SongBird';
   const scoreH5 = document.createElement('h5');
@@ -9,7 +12,8 @@ export const createHeader = () => {
   scoreSpan.classList.add('score');
   scoreSpan.textContent = '0';
   scoreH5.append(scoreSpan);
-  header.append(h1);
+  linkHeader.append(h1);
+  header.append(linkHeader);
   header.append(scoreH5);
   document.body.append(header);
 };
