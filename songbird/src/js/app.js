@@ -6,5 +6,5 @@ export const run = () => {
   getBirds();
   console.log(birdsObj);
   createHeader();
-  createGame();
+  createGame(birdsObj.start);
 };

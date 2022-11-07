@@ -1,5 +1,6 @@
 
 import { birdsObj } from "../../store/store";
+import { createNewAudio, playButtonEvent } from "../../controller/control";
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -20,7 +21,7 @@ const createListBirds = () => {
   return ul;
 }
 
-const createPlayer = () => {
+const createPlayer = (birdsObj) => {
   const playerContainer = document.createElement('div');
   playerContainer.classList.add('player-container');
 
@@ -38,8 +39,12 @@ const createPlayer = () => {
   const audioPlayer = document.createElement('div');
   audioPlayer.classList.add('audio-container');
 
+  const audio = createNewAudio(birdsObj);
+  playerContainer.append(audio);
+
   const playButton = document.createElement('button');
   playButton.classList.add('play-button');
+  playButtonEvent(playButton, audio);
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg');
@@ -84,13 +89,13 @@ const createPlayer = () => {
   return playerContainer;
 }
 
-const createLeftContainer = () => {
+const createLeftContainer = (birdsObj) => {
   const leftContainer = document.createElement('div');
   leftContainer.classList.add('chose-container__left');
 
   const birdsUl = document.createElement('birds-ul');
   birdsUl.classList.add('birds-ul');
-  birdsObj.start.forEach((el) => {
+  birdsObj.forEach((el) => {
     const liBird = document.createElement('li');
     liBird.classList.add('birds-li');
     const textSpan = document.createElement('span');
@@ -114,10 +119,10 @@ const createRightContainer = () => {
   return rightContainer;  
 }
 
-const createChoseContainer = () => {
+const createChoseContainer = (birdsObj) => {
   const choseContainer = document.createElement('div');
   choseContainer.classList.add('chose-container');
-  choseContainer.append(createLeftContainer(), createRightContainer());
+  choseContainer.append(createLeftContainer(birdsObj), createRightContainer());
   return choseContainer;
 }
 
@@ -128,15 +133,15 @@ const createNextButton = () => {
   return nextButton;
 }
 
-export const createGame = () => {
+export const createGame = (birdsObj, mainId = 'start') => {
   const main = document.createElement('main');
   main.classList.add('main');
   const navContainer = document.createElement('div');
   navContainer.classList.add('birds-container');
   navContainer.append(createListBirds());
 
-  const audioPlayer = createPlayer();
-  const choseCont = createChoseContainer();
+  const audioPlayer = createPlayer(birdsObj);
+  const choseCont = createChoseContainer(birdsObj);
   const nextButton = createNextButton();
 
   main.append(navContainer, audioPlayer, choseCont, nextButton);
