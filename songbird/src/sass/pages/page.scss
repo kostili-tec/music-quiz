@@ -105,10 +105,19 @@ body {
   cursor: pointer;
 }
 
-.icon-svg {
+.audio-svg {
   width: 20px;
   height: 20px;
   fill: rgb(0, 151, 139);
+}
+#audio-stop {
+  height: 14px;
+  width: 14px;
+}
+#audio-play {
+  height: 18px;
+  width: 18px;
+  padding-left: 2px;
 }
 
 .progress-container {

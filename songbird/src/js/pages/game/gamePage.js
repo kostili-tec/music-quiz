@@ -45,8 +45,9 @@ const createPlayer = (storeObj) => {
   playButtonEvent(playButton, audio);
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.classList.add('icon-svg');
-  svg.innerHTML = '<use xlink:href="./copies/sprite.svg#pause-button"></use>';
+  svg.classList.add('icon-svg', 'audio-svg');
+  svg.id = 'audio-stop';
+  svg.innerHTML = '<use xlink:href="./copies/sprite.svg#stop-button"></use>';
 
   playButton.append(svg);
 

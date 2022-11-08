@@ -73,18 +73,27 @@ export const createNewAudio = (birdsObj) => {
 
 export const playButtonEvent = (button, audioEl) => {
   let isPlayed = false;
+  audioEl.addEventListener('ended', (e) => {
+    const audioSvg = document.querySelector('.audio-svg ');
+    audioSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#stop-button"></use>';
+    audioSvg.id = 'audio-stop';   // e.target.load();
+    isPlayed = false;
+  })
   button.addEventListener('click', () => {
+    const audioSvg = document.querySelector('.audio-svg ');
     if (!isPlayed) {
       isPlayed = true;
       audioEl.play();
+      audioSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#pause-button"></use>';
+      audioSvg.id = '';
     } else {
       isPlayed = false;
       audioEl.pause();
+      audioSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#play-button"></use>';
+      audioSvg.id = 'audio-play';
     }
   });
 };
-
-
 
 export const hashChangeEvent = () => {
   window.addEventListener('hashchange', () => {
