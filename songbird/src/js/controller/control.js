@@ -140,6 +140,11 @@ export const renderNextPage = (nextButton) => {
   });
 };
 
+const enableNextButton = () => {
+  const nextButton = document.querySelector('.next-button');
+  nextButton.classList.remove('disable-link');
+}
+
 const turnOffList = (winId) => {
   const list = document.querySelectorAll('.birds-li');
   list.forEach((el) => {
@@ -159,6 +164,20 @@ const saveScore = () => {
   scoreObj.score = 5;
 }
 
+const playAudioWhenFail = () => {
+  const weweAudio = document.querySelector('.header-audio');
+  weweAudio.src = './copies/sound/wewewewe_cut.mp3';
+  weweAudio.currentTime = 0;
+  weweAudio.play();
+}
+
+const playAudioWhenWin = () => {
+  const weweAudio = document.querySelector('.header-audio');
+  weweAudio.src = './copies/sound/kashing.mp3';
+  weweAudio.currentTime = 0.5;
+  weweAudio.play();
+}
+
 export const checkAnswer = (e) => {
   const { target } = e;
   const liEl = target.closest('.birds-li');
@@ -171,9 +190,12 @@ export const checkAnswer = (e) => {
       liEl.classList.add('birds-li__win');
       turnOffList(dataId);
       saveScore();
+      enableNextButton();
+      playAudioWhenWin();
     } else {
       liEl.classList.add('birds-li__fail');
       reduceScore();
+      playAudioWhenFail();
     }
   }
 }

@@ -135,7 +135,7 @@ const createNextButton = () => {
   const nextButton = document.createElement('a');
   nextButton.href = '#start';
   renderNextPage(nextButton);
-  nextButton.classList.add('next-button');
+  nextButton.classList.add('next-button', 'disable-link');
   nextButton.textContent = 'Next Level';
   return nextButton;
 };
