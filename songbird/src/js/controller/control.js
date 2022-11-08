@@ -1,8 +1,10 @@
-import { birdsObj, scoreObj } from '../store/store';
-import { createGame } from '../pages/game/gamePage';
+import { birdsObj, scoreObj, currentBirdObj } from '../store/store';
+import { createGame, showBird } from '../pages/game/gamePage';
 
 const getRandomBird = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length - 1));
+  Object.assign(currentBirdObj, storeObj[randomIndex]);
+  console.log('currentBirdObj', currentBirdObj);
   return storeObj[randomIndex];
 };
 
@@ -192,6 +194,7 @@ export const checkAnswer = (e) => {
       saveScore();
       enableNextButton();
       playAudioWhenWin();
+      showBird();
     } else {
       liEl.classList.add('birds-li__fail');
       reduceScore();

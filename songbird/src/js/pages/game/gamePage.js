@@ -1,4 +1,5 @@
 import { createNewAudio, playButtonEvent, renderNextPage, checkAnswer, handleInputChange } from '../../controller/control';
+import { currentObj } from '../../store/store';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -88,7 +89,7 @@ const createPlayer = (storeObj) => {
   rightContainer.append(nameBird, audioPlayer);
 
   playerContainer.append(birdImg, rightContainer);
-
+console.log(playerContainer);
   return playerContainer;
 };
 
@@ -124,6 +125,12 @@ const createRightContainer = () => {
   return rightContainer;
 };
 
+export const showBird = () => {
+  const rightCont = document.querySelector('.chose-container__right');
+  const audioPlayer = document.querySelector('.player-container');
+  rightCont.replaceChildren(audioPlayer.cloneNode(true));
+}
+
 const createChoseContainer = (storeObj) => {
   const choseContainer = document.createElement('div');
   choseContainer.classList.add('chose-container');
@@ -151,6 +158,9 @@ export const createGame = (storeObj, mainId = 'start') => {
   const audioPlayer = createPlayer(storeObj);
   const choseCont = createChoseContainer(storeObj);
   const nextButton = createNextButton();
+  // currentObj = storeObj;
+  Object.assign(currentObj, storeObj);
+  console.log(currentObj);
 
   main.append(navContainer, audioPlayer, choseCont, nextButton);
   document.body.append(main);

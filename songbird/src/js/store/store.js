@@ -16,3 +16,6 @@ export const scoreObj = {
   score: 5,
   fails: 0
 }
+
+export let currentObj = {};
+export let currentBirdObj= {};
