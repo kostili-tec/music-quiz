@@ -1,4 +1,4 @@
-import { createNewAudio, playButtonEvent, renderNextPage, updateProgress, handleInputChange } from '../../controller/control';
+import { createNewAudio, playButtonEvent, renderNextPage, checkAnswer, handleInputChange } from '../../controller/control';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -96,11 +96,12 @@ const createLeftContainer = (storeObj) => {
   const leftContainer = document.createElement('div');
   leftContainer.classList.add('chose-container__left');
 
-  const birdsUl = document.createElement('birds-ul');
+  const birdsUl = document.createElement('ul');
   birdsUl.classList.add('birds-ul');
   storeObj.forEach((el) => {
     const liBird = document.createElement('li');
     liBird.classList.add('birds-li');
+    liBird.setAttribute('data-id', el.id);
     const textSpan = document.createElement('span');
     textSpan.classList.add('birds-li__span');
     textSpan.textContent = el.name;
@@ -108,6 +109,7 @@ const createLeftContainer = (storeObj) => {
     birdsUl.append(liBird);
   });
   leftContainer.append(birdsUl);
+  birdsUl.addEventListener('click', checkAnswer);
   return leftContainer;
 };
 
