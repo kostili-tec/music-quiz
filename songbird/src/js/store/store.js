@@ -10,3 +10,9 @@ export const getBirds = () => {
   birdsObj.hunters = [...birdsData[4]];
   birdsObj.sea = [...birdsData[5]];
 };
+
+export const scoreObj = {
+  currentScore: 0,
+  score: 5,
+  fails: 0
+}

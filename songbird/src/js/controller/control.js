@@ -1,4 +1,4 @@
-import { birdsObj } from '../store/store';
+import { birdsObj, scoreObj } from '../store/store';
 import { createGame } from '../pages/game/gamePage';
 
 const getRandomBird = (storeObj) => {
@@ -140,6 +140,25 @@ export const renderNextPage = (nextButton) => {
   });
 };
 
+const turnOffList = (winId) => {
+  const list = document.querySelectorAll('.birds-li');
+  list.forEach((el) => {
+    const listDataId = el.getAttribute('data-id');
+    listDataId !== winId ? el.classList.add('birds-li__disable') : null;
+  })
+}
+
+const reduceScore = () => {
+  scoreObj.score = scoreObj.score - 1;
+  scoreObj.fails = scoreObj.fails + 1;
+}
+const saveScore = () => {
+  scoreObj.currentScore = scoreObj.currentScore + scoreObj.score;
+  const headerScore = document.querySelector('.score');
+  headerScore.textContent = scoreObj.currentScore;
+  scoreObj.score = 5;
+}
+
 export const checkAnswer = (e) => {
   const { target } = e;
   const liEl = target.closest('.birds-li');
@@ -148,11 +167,13 @@ export const checkAnswer = (e) => {
 
   if (liEl) {
     const dataId = liEl.getAttribute('data-id');
-    console.log(dataId);
     if (dataId === audioId) {
-      console.log(true);
+      liEl.classList.add('birds-li__win');
+      turnOffList(dataId);
+      saveScore();
     } else {
-      
+      liEl.classList.add('birds-li__fail');
+      reduceScore();
     }
   }
 }

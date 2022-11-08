@@ -139,6 +139,7 @@ body {
   background-color: #303030;
   border: 1px solid rgb(128, 128, 128);
   border-radius: 5px;
+  overflow: hidden;
 }
 .chose-container__right{
   padding: 1rem;
@@ -170,7 +171,20 @@ body {
 }
 
 .birds-li__fail {
-  
+  color: red;
+  background-color: #222;
+  cursor: auto;
+  pointer-events: none;
+}
+.birds-li__win {
+  color:rgb(0, 126, 84);
+  cursor: auto;
+  pointer-events: none;
+}
+.birds-li__disable {
+  background-color: #222;
+  cursor: auto;
+  pointer-events: none;
 }
 
 .next-button {
