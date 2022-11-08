@@ -1,4 +1,4 @@
-import { createNewAudio, playButtonEvent, renderNextPage, updateProgress } from '../../controller/control';
+import { createNewAudio, playButtonEvent, renderNextPage, updateProgress, handleInputChange } from '../../controller/control';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -53,12 +53,15 @@ const createPlayer = (storeObj) => {
   const progressContainer = document.createElement('div');
   progressContainer.classList.add('progress-container');
 
-  const progresBar = document.createElement('div');
-  progresBar.classList.add('progres-bar');
-  progresBar.addEventListener('click', updateProgress);
-  const progress = document.createElement('div');
-  progress.classList.add('progress');
-  progresBar.append(progress);
+  const inputProgress = document.createElement('input');
+  inputProgress.type = 'range';
+  inputProgress.value = 0;
+  inputProgress.min = 0;
+  inputProgress.max = 100;
+  inputProgress.classList.add('input-progress');
+  inputProgress.id = 'range-progress';
+
+  inputProgress.addEventListener('input', handleInputChange);
 
   const timeCointaer = document.createElement('div');
   timeCointaer.classList.add('time-container');
@@ -78,7 +81,7 @@ const createPlayer = (storeObj) => {
 
   timeCointaer.append(spanStart, spanEnd);
 
-  progressContainer.append(progresBar, timeCointaer);
+  progressContainer.append(inputProgress, timeCointaer);
 
   audioPlayer.append(playButton, progressContainer);
   rightContainer.append(nameBird, audioPlayer);

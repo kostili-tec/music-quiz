@@ -6,14 +6,32 @@ const getRandomBird = (storeObj) => {
   return storeObj[randomIndex];
 };
 
+export const handleInputChange = (e) => {
+  let target = e.target;
+  const audio = document.querySelector('.audio');
+  if (e.target.type !== 'range') {
+    target = document.querySelector('#range-progress');
+  } 
+  const min = target.min;
+  const max = target.max;
+  const val = target.value;
+
+  audio.currentTime = audio.duration * (val / 100);  
+  target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
+}
+
 const fillProgress = (e) => {
   const audio = e.target;
   const currentTime = document.querySelector('.audio-current');
   const lengthTime = document.querySelector('.audio-end');
-  const progress = document.querySelector('.progress');
-
-  progress.style.width = audio.currentTime / audio.duration * 100 + "%";
-  // progress.style.width = audio.currentTime / audio.duration * 100 + "%";
+  const progress = document.querySelector('.input-progress');
+  
+  progress.value = audio.currentTime / audio.duration * 100;
+  const min = progress.min;
+  const max = progress.max;
+  const val = progress.value;
+  progress.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
+  
   let minsCurrent = Math.floor(audio.currentTime / 60);
   let secsCurrent = Math.floor(audio.currentTime % 60);
   if (minsCurrent < 10) {
