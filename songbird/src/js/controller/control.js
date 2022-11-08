@@ -139,3 +139,20 @@ export const renderNextPage = (nextButton) => {
     nextButton.href = `#${pages[count]}`;
   });
 };
+
+export const checkAnswer = (e) => {
+  const { target } = e;
+  const liEl = target.closest('.birds-li');
+  const audio = document.querySelector('.audio');
+  const audioId = audio.getAttribute('data-id');
+
+  if (liEl) {
+    const dataId = liEl.getAttribute('data-id');
+    console.log(dataId);
+    if (dataId === audioId) {
+      console.log(true);
+    } else {
+      
+    }
+  }
+}
