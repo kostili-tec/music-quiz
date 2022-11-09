@@ -1,5 +1,5 @@
 import { createNewAudio, playButtonEvent, renderNextPage, checkAnswer, handleInputChange } from '../../controller/control';
-import { currentObj } from '../../store/store';
+import { currentObj, currentBirdObj } from '../../store/store';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -125,10 +125,35 @@ const createRightContainer = () => {
   return rightContainer;
 };
 
+const returnBirds = (container) => {
+  const img = container.querySelector('.birds-img');
+  img.src = currentBirdObj.image;
+  const nameBird = container.querySelector('.name-bird__h3');
+  nameBird.textContent = currentBirdObj.name;
+};
+
+const addInfo = (clonedNode) => {
+  const latinText = document.createElement('h4');
+  latinText.textContent = currentBirdObj.species;
+  latinText.classList.add('name-bird__h3', 'font__H4');
+  const description = document.createElement('p');
+  description.textContent = currentBirdObj.description;
+  description.classList.add('description-birds');
+
+  const nameBirdh3 = clonedNode.querySelector('.name-bird__h3');
+  nameBirdh3.classList.add('font__H3');
+  nameBirdh3.after(latinText);
+  clonedNode.after(description);
+}
+
 export const showBird = () => {
-  const rightCont = document.querySelector('.chose-container__right');
   const audioPlayer = document.querySelector('.player-container');
-  rightCont.replaceChildren(audioPlayer.cloneNode(true));
+  returnBirds(audioPlayer);
+  const rightCont = document.querySelector('.chose-container__right');
+  const clonedPlayer = audioPlayer.cloneNode(true);
+  clonedPlayer.classList.add('remove__margin');
+  addInfo(clonedPlayer);
+  rightCont.replaceChildren(clonedPlayer);
 }
 
 const createChoseContainer = (storeObj) => {
@@ -159,8 +184,8 @@ export const createGame = (storeObj, mainId = 'start') => {
   const choseCont = createChoseContainer(storeObj);
   const nextButton = createNextButton();
   // currentObj = storeObj;
-  Object.assign(currentObj, storeObj);
-  console.log(currentObj);
+  // Object.assign(currentObj, storeObj);
+  // console.log(currentObj);
 
   main.append(navContainer, audioPlayer, choseCont, nextButton);
   document.body.append(main);
