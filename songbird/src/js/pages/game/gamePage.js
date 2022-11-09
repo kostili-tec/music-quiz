@@ -1,5 +1,13 @@
-import { createNewAudio, playButtonEvent, renderNextPage, checkAnswer, handleInputChange } from '../../controller/control';
-import { currentObj, currentBirdObj } from '../../store/store';
+import {
+  saveCurrentRandomObj, 
+  createNewAudio, 
+  fillProgress,
+  playButtonEvent,
+  renderNextPage,
+  checkAnswer,
+  handleInputChange,
+} from '../../controller/control';
+import { currentBirdObj } from '../../store/store';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -20,9 +28,9 @@ const createListBirds = () => {
   return ul;
 };
 
-const createPlayer = (storeObj) => {
+export const createPlayer = (storeObj, additionClass, isShow = false) => {
   const playerContainer = document.createElement('div');
-  playerContainer.classList.add('player-container');
+  playerContainer.classList.add('player-container', `player-container__${additionClass}`);
 
   const birdImg = document.createElement('img');
   birdImg.classList.add('birds-img');
@@ -40,10 +48,11 @@ const createPlayer = (storeObj) => {
 
   const audio = createNewAudio(storeObj);
   playerContainer.append(audio);
+  audio.addEventListener('timeupdate', fillProgress.bind(null, playerContainer));
 
   const playButton = document.createElement('button');
   playButton.classList.add('play-button');
-  playButtonEvent(playButton, audio);
+  playButtonEvent(playButton, audio, playerContainer);
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg', 'audio-svg');
@@ -63,7 +72,7 @@ const createPlayer = (storeObj) => {
   inputProgress.classList.add('input-progress');
   inputProgress.id = 'range-progress';
 
-  inputProgress.addEventListener('input', handleInputChange);
+  inputProgress.addEventListener('input', handleInputChange.bind(null, playerContainer));
 
   const timeCointaer = document.createElement('div');
   timeCointaer.classList.add('time-container');
@@ -89,7 +98,12 @@ const createPlayer = (storeObj) => {
   rightContainer.append(nameBird, audioPlayer);
 
   playerContainer.append(birdImg, rightContainer);
-console.log(playerContainer);
+
+  if (isShow === true) {
+    birdImg.src = storeObj.image;
+    nameBird.textContent = storeObj.name;
+  }
+
   return playerContainer;
 };
 
@@ -144,7 +158,7 @@ const addInfo = (clonedNode) => {
   nameBirdh3.classList.add('font__H3');
   nameBirdh3.after(latinText);
   clonedNode.after(description);
-}
+};
 
 export const showBird = () => {
   const audioPlayer = document.querySelector('.player-container');
@@ -154,7 +168,7 @@ export const showBird = () => {
   clonedPlayer.classList.add('remove__margin');
   addInfo(clonedPlayer);
   rightCont.replaceChildren(clonedPlayer);
-}
+};
 
 const createChoseContainer = (storeObj) => {
   const choseContainer = document.createElement('div');
@@ -173,6 +187,7 @@ const createNextButton = () => {
 };
 
 export const createGame = (storeObj, mainId = 'start') => {
+  saveCurrentRandomObj(storeObj);
   const main = document.createElement('main');
   main.classList.add('main');
   main.id = mainId;
@@ -180,13 +195,10 @@ export const createGame = (storeObj, mainId = 'start') => {
   navContainer.classList.add('birds-container');
   navContainer.append(createListBirds());
 
-  const audioPlayer = createPlayer(storeObj);
+  const mediaContainer = createPlayer(currentBirdObj, 'up', false);
   const choseCont = createChoseContainer(storeObj);
   const nextButton = createNextButton();
-  // currentObj = storeObj;
-  // Object.assign(currentObj, storeObj);
-  // console.log(currentObj);
 
-  main.append(navContainer, audioPlayer, choseCont, nextButton);
+  main.append(navContainer, mediaContainer, choseCont, nextButton);
   document.body.append(main);
 };

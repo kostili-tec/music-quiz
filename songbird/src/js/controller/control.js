@@ -1,88 +1,83 @@
 import { birdsObj, scoreObj, currentBirdObj } from '../store/store';
-import { createGame, showBird } from '../pages/game/gamePage';
+import { createGame, createPlayer } from '../pages/game/gamePage';
 
-const getRandomBird = (storeObj) => {
+export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length - 1));
   Object.assign(currentBirdObj, storeObj[randomIndex]);
-  console.log('currentBirdObj', currentBirdObj);
-  return storeObj[randomIndex];
 };
 
-export const handleInputChange = (e) => {
-  let target = e.target;
-  const audio = document.querySelector('.audio');
+export const handleInputChange = (parentObj, e) => {
+  let { target } = e;
+  const audio = parentObj.querySelector('.audio');
   if (e.target.type !== 'range') {
-    target = document.querySelector('#range-progress');
-  } 
-  const min = target.min;
-  const max = target.max;
+    target = parentObj.querySelector('#range-progress');
+  }
+  const { min } = target;
+  const { max } = target;
   const val = target.value;
 
-  audio.currentTime = audio.duration * (val / 100);  
-  target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
-}
+  audio.currentTime = audio.duration * (val / 100);
+  target.style.backgroundSize = `${(val - min) * 100 / (max - min)}% 100%`;
+};
 
-const fillProgress = (e) => {
+export const fillProgress = (parentObj, e) => {
   const audio = e.target;
-  const currentTime = document.querySelector('.audio-current');
-  const lengthTime = document.querySelector('.audio-end');
-  const progress = document.querySelector('.input-progress');
-  
+  const currentTime = parentObj.querySelector('.audio-current');
+  const lengthTime = parentObj.querySelector('.audio-end');
+  const progress = parentObj.querySelector('.input-progress');
+
   progress.value = audio.currentTime / audio.duration * 100;
-  const min = progress.min;
-  const max = progress.max;
+  const { min } = progress;
+  const { max } = progress;
   const val = progress.value;
-  progress.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
-  
+  progress.style.backgroundSize = `${(val - min) * 100 / (max - min)}% 100%`;
+
   let minsCurrent = Math.floor(audio.currentTime / 60);
   let secsCurrent = Math.floor(audio.currentTime % 60);
   if (minsCurrent < 10) {
-      minsCurrent = '0' + minsCurrent;
+    minsCurrent = `0${minsCurrent}`;
   }
   if (secsCurrent < 10) {
-      secsCurrent = '0' + secsCurrent;
+    secsCurrent = `0${secsCurrent}`;
   }
   currentTime.textContent = `${minsCurrent}:${secsCurrent}`;
 
-  
   let minsFull = parseInt(audio.duration / 60, 10);
   let secsFull = parseInt(audio.duration % 60);
   if (minsFull < 10) {
-      minsFull = '0' + minsFull;
+    minsFull = `0${minsFull}`;
   }
   if (secsFull < 10) {
-      secsFull = '0' + secsFull;
+    secsFull = `0${secsFull}`;
   }
   lengthTime.textContent = `${minsFull}:${secsFull}`;
-}
+};
 
 export const updateProgress = (e) => {
   const audio = document.querySelector('.audio');
   console.log((e.offsetX / e.target.clientWidth) * audio.duration);
   audio.currentTime = (e.offsetX / e.target.clientWidth) * audio.duration;
-}
+};
 
-export const createNewAudio = (birdsObj) => {
+export const createNewAudio = () => {
   const audio = new Audio();
-  const randomBird = getRandomBird(birdsObj);
   audio.classList.add('audio');
-  audio.setAttribute('data-id', randomBird.id);
-  audio.src = randomBird.audio;
+  audio.setAttribute('data-id', currentBirdObj.id);
+  audio.src = currentBirdObj.audio;
   audio.volume = 0.5;
-  audio.addEventListener('timeupdate', fillProgress);
   return audio;
 };
 
-export const playButtonEvent = (button, audioEl) => {
+export const playButtonEvent = (button, audioEl, parentEl) => {
   let isPlayed = false;
-  audioEl.addEventListener('ended', (e) => {
-    const audioSvg = document.querySelector('.audio-svg ');
+  audioEl.addEventListener('ended', () => {
+    const audioSvg = parentEl.querySelector('.audio-svg ');
     audioSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#stop-button"></use>';
-    audioSvg.id = 'audio-stop';   // e.target.load();
+    audioSvg.id = 'audio-stop';
     isPlayed = false;
-  })
+  });
   button.addEventListener('click', () => {
-    const audioSvg = document.querySelector('.audio-svg ');
+    const audioSvg = parentEl.querySelector('.audio-svg ');
     if (!isPlayed) {
       isPlayed = true;
       audioEl.play();
@@ -145,40 +140,52 @@ export const renderNextPage = (nextButton) => {
 const enableNextButton = () => {
   const nextButton = document.querySelector('.next-button');
   nextButton.classList.remove('disable-link');
-}
+};
 
 const turnOffList = (winId) => {
   const list = document.querySelectorAll('.birds-li');
   list.forEach((el) => {
     const listDataId = el.getAttribute('data-id');
     listDataId !== winId ? el.classList.add('birds-li__disable') : null;
-  })
-}
+  });
+};
 
 const reduceScore = () => {
-  scoreObj.score = scoreObj.score - 1;
-  scoreObj.fails = scoreObj.fails + 1;
-}
+  scoreObj.score -= 1;
+  scoreObj.fails += 1;
+};
 const saveScore = () => {
-  scoreObj.currentScore = scoreObj.currentScore + scoreObj.score;
+  scoreObj.currentScore += scoreObj.score;
   const headerScore = document.querySelector('.score');
   headerScore.textContent = scoreObj.currentScore;
   scoreObj.score = 5;
-}
+};
 
 const playAudioWhenFail = () => {
   const weweAudio = document.querySelector('.header-audio');
   weweAudio.src = './copies/sound/wewewewe_cut.mp3';
   weweAudio.currentTime = 0;
   weweAudio.play();
-}
+};
 
 const playAudioWhenWin = () => {
   const weweAudio = document.querySelector('.header-audio');
   weweAudio.src = './copies/sound/kashing.mp3';
   weweAudio.currentTime = 0.5;
   weweAudio.play();
-}
+};
+
+const replaceMainMediaContainer = () => {
+  const mediaContainer = document.querySelector('.player-container');
+  const newMediaContainer = createPlayer(currentBirdObj, 'up', true);
+  mediaContainer.replaceWith(newMediaContainer);
+};
+
+const newDownMediaContainer = () => {
+  const newMediaContainer = createPlayer(currentBirdObj, 'down', true);
+  const downMedia = document.querySelector('.chose-container__right');
+  downMedia.replaceChildren(newMediaContainer);
+};
 
 export const checkAnswer = (e) => {
   const { target } = e;
@@ -194,11 +201,12 @@ export const checkAnswer = (e) => {
       saveScore();
       enableNextButton();
       playAudioWhenWin();
-      showBird();
+      replaceMainMediaContainer();
+      newDownMediaContainer();
     } else {
       liEl.classList.add('birds-li__fail');
       reduceScore();
       playAudioWhenFail();
     }
   }
-}
+};
