@@ -115,16 +115,31 @@ body {
   width: 18px;
   padding-left: 2px;
 }
+#audio-volume {
+  width: 20px;
+  height: 20px;
+  fill: rgba(255, 255, 255, 0.692);
+}
 
 .progress-container {
   width: 100%;
-  padding-top: 1rem;
+  // padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
 }
 
 .time-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 .chose-container {

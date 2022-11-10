@@ -74,6 +74,25 @@ export const createPlayer = (storeObj, additionClass, isShow = false) => {
 
   inputProgress.addEventListener('input', handleInputChange.bind(null, playerContainer));
 
+  const volumeContainer = document.createElement('div');
+  volumeContainer.classList.add('volume-container');
+
+  const volumeSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  volumeSvg.classList.add('icon-svg', 'audio-svg');
+  volumeSvg.id = 'audio-volume';
+  volumeSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#volume"></use>';
+
+  const inputVolume = document.createElement('input');
+  inputVolume.type = 'range';
+  inputVolume.value = 50;
+  inputVolume.min = 0;
+  inputVolume.max = 100;
+
+  inputVolume.classList.add('input-progress');
+  inputVolume.id = 'volume-progress';
+
+  volumeContainer.append(volumeSvg, inputVolume);
+
   const timeCointaer = document.createElement('div');
   timeCointaer.classList.add('time-container');
 
@@ -92,7 +111,7 @@ export const createPlayer = (storeObj, additionClass, isShow = false) => {
 
   timeCointaer.append(spanStart, spanEnd);
 
-  progressContainer.append(inputProgress, timeCointaer);
+  progressContainer.append(volumeContainer, inputProgress, timeCointaer);
 
   audioPlayer.append(playButton, progressContainer);
   rightContainer.append(nameBird, audioPlayer);
