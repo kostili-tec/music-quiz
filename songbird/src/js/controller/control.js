@@ -200,6 +200,7 @@ export const checkAnswer = (e) => {
     const dataId = liEl.getAttribute('data-id');
     if (dataId === audioId) {
       liEl.classList.add('birds-li__win');
+      liEl.firstChild.classList.add('span-cyrcle__win');
       turnOffList(dataId);
       saveScore();
       enableNextButton();
@@ -208,6 +209,7 @@ export const checkAnswer = (e) => {
       newDownMediaContainer();
     } else {
       liEl.classList.add('birds-li__fail');
+      liEl.firstChild.classList.add('span-cyrcle__fail');
       reduceScore();
       playAudioWhenFail();
     }

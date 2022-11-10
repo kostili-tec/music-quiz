@@ -117,10 +117,12 @@ const createLeftContainer = (storeObj) => {
     const liBird = document.createElement('li');
     liBird.classList.add('birds-li');
     liBird.setAttribute('data-id', el.id);
+    const cyrcleSpan = document.createElement('span');
+    cyrcleSpan.classList.add('span-cyrcle');
     const textSpan = document.createElement('span');
     textSpan.classList.add('birds-li__span');
     textSpan.textContent = el.name;
-    liBird.append(textSpan);
+    liBird.append(cyrcleSpan, textSpan);
     birdsUl.append(liBird);
   });
   leftContainer.append(birdsUl);
