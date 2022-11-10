@@ -1,5 +1,10 @@
-.remove__margin {
+.remove__margin, .player-container__down {
   margin: 0;
+}
+
+.player-container__down {
+  gap: 20px;
+  padding: 10px 0;
 }
 
 .font__H3 {

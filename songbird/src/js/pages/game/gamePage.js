@@ -139,36 +139,20 @@ const createRightContainer = () => {
   return rightContainer;
 };
 
-const returnBirds = (container) => {
-  const img = container.querySelector('.birds-img');
-  img.src = currentBirdObj.image;
-  const nameBird = container.querySelector('.name-bird__h3');
-  nameBird.textContent = currentBirdObj.name;
-};
-
-const addInfo = (clonedNode) => {
+export const addLatinName = (parendNode) => {
+  const nameBirdh3 = parendNode.querySelector('.name-bird__h3');
   const latinText = document.createElement('h4');
   latinText.textContent = currentBirdObj.species;
   latinText.classList.add('name-bird__h3', 'font__H4');
+  nameBirdh3.after(latinText);
+};
+
+export const addDescription = () => {
   const description = document.createElement('p');
   description.textContent = currentBirdObj.description;
   description.classList.add('description-birds');
-
-  const nameBirdh3 = clonedNode.querySelector('.name-bird__h3');
-  nameBirdh3.classList.add('font__H3');
-  nameBirdh3.after(latinText);
-  clonedNode.after(description);
-};
-
-export const showBird = () => {
-  const audioPlayer = document.querySelector('.player-container');
-  returnBirds(audioPlayer);
-  const rightCont = document.querySelector('.chose-container__right');
-  const clonedPlayer = audioPlayer.cloneNode(true);
-  clonedPlayer.classList.add('remove__margin');
-  addInfo(clonedPlayer);
-  rightCont.replaceChildren(clonedPlayer);
-};
+  return description;
+}
 
 const createChoseContainer = (storeObj) => {
   const choseContainer = document.createElement('div');

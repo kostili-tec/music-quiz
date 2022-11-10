@@ -1,5 +1,5 @@
 import { birdsObj, scoreObj, currentBirdObj } from '../store/store';
-import { createGame, createPlayer } from '../pages/game/gamePage';
+import { createGame, createPlayer, addLatinName, addDescription } from '../pages/game/gamePage';
 
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length - 1));
@@ -182,9 +182,12 @@ const replaceMainMediaContainer = () => {
 };
 
 const newDownMediaContainer = () => {
-  const newMediaContainer = createPlayer(currentBirdObj, 'down', true);
   const downMedia = document.querySelector('.chose-container__right');
-  downMedia.replaceChildren(newMediaContainer);
+  const newMediaContainer = createPlayer(currentBirdObj, 'down', true);
+  const description = addDescription();
+  addLatinName(newMediaContainer);
+  downMedia.replaceChildren();
+  downMedia.append(newMediaContainer, description);
 };
 
 export const checkAnswer = (e) => {
