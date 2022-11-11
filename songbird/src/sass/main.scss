@@ -1,5 +1,8 @@
-@import 'pages/start_page';
-@import 'pages/page';
-@import 'components/inputs';
+@import 'base/_fonts';
 
 @import 'abstract/abstract';
+
+@import 'components/inputs';
+
+@import 'pages/start_page';
+@import 'pages/page';
