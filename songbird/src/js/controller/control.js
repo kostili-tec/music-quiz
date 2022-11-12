@@ -1,5 +1,7 @@
 import { birdsObj, scoreObj, currentBirdObj } from '../store/store';
 import { createGame, createPlayer, addLatinName, addDescription } from '../pages/game/gamePage';
+import { createHeader, createStartHeader } from '../components/header';
+import { createWelcome } from '../pages/start/startPage';
 
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length - 1));
@@ -92,36 +94,62 @@ export const playButtonEvent = (button, audioEl, parentEl) => {
   });
 };
 
+const backToMainPage = () => {
+  document.body.replaceChildren();
+  createStartHeader();
+  createWelcome();
+}
+
 export const hashChangeEvent = () => {
   window.addEventListener('hashchange', () => {
     let nextObj = null;
     const main = document.querySelector('.main');
     const hash = window.location.hash.slice(1);
+    console.log(window.location.hash);
     switch (hash) {
+      case 'main': 
+        nextObj = birdsObj.start;
+        backToMainPage();
+        break;
       case 'start':
         nextObj = birdsObj.start;
+        // main.remove();
+        document.body.replaceChildren();
+        createHeader();
+        createGame(nextObj);
         break;
       case 'sparrow':
         nextObj = birdsObj.sparrow;
+        main.remove();
+        createGame(nextObj);
         break;
       case 'woods':
         nextObj = birdsObj.woods;
+        main.remove();
+        createGame(nextObj);
         break;
       case 'songs':
         nextObj = birdsObj.songs;
+        main.remove();
+        createGame(nextObj);
         break;
       case 'hunters':
         nextObj = birdsObj.hunters;
+        main.remove();
+        createGame(nextObj);
         break;
       case 'sea':
         nextObj = birdsObj.sea;
+        main.remove();
+        createGame(nextObj);
         break;
-      default:
+  /*     default:
         nextObj = birdsObj.start;
-        break;
+        main.remove();
+        createGame(nextObj);
+        break; */
     }
-    main.remove();
-    createGame(nextObj);
+
   });
 };
 
@@ -215,3 +243,11 @@ export const checkAnswer = (e) => {
     }
   }
 };
+
+
+export const changeUrlOnLoad = () => {
+  window.addEventListener('load', () => {
+    // const hash = window.location.hash.slice(1);
+    window.location.hash = '#main';
+  })
+}

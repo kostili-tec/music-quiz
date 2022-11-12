@@ -23,10 +23,15 @@ export const createWelcome = () => {
   const disclaimer = document.createElement('a');
   disclaimer.classList.add('button', 'disclaimer-button');
   disclaimer.textContent = 'Disclaimer';
+
+  const bg = document.createElement('div');
+  bg.classList.add('start-bg');
+
   
   navContainer.append(startButton, results, archive, disclaimer);
 
-  main.append(navContainer);
+  main.append(bg, navContainer);
 
   document.body.append(main);
+  // document.body.id = 'start-body';
 }
