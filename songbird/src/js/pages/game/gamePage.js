@@ -7,7 +7,7 @@ import {
   checkAnswer,
   handleInputChange,
 } from '../../controller/control';
-import { currentBirdObj } from '../../store/store';
+import { currentBirdObj, currentSongsObj } from '../../store/store';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -18,7 +18,7 @@ const createLi = (text) => {
 };
 
 const createListBirds = () => {
-  const namesArr = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
+  const namesArr = ['Разминка', 'Thrash', 'Groove', 'Stoner/Doom', 'Nu', 'Progressive/Djent', 'Death'];
   const navContainer = document.createElement('div');
   navContainer.classList.add('birds-container');
   const ul = document.createElement('ul');
@@ -200,7 +200,7 @@ export const createGame = (storeObj, mainId = 'start') => {
   navContainer.classList.add('birds-container');
   navContainer.append(createListBirds());
 
-  const mediaContainer = createPlayer(currentBirdObj, 'up', false);
+  const mediaContainer = createPlayer(currentSongsObj, 'up', false);
   const choseCont = createChoseContainer(storeObj);
   const nextButton = createNextButton();
 

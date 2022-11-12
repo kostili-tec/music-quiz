@@ -1,11 +1,11 @@
-import { birdsObj, scoreObj, currentBirdObj } from '../store/store';
+import { birdsObj, scoreObj, currentBirdObj, songsObj, currentSongsObj } from '../store/store';
 import { createGame, createPlayer, addLatinName, addDescription } from '../pages/game/gamePage';
 import { createHeader, createStartHeader } from '../components/header';
 import { createWelcome } from '../pages/start/startPage';
 
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length - 1));
-  Object.assign(currentBirdObj, storeObj[randomIndex]);
+  Object.assign(currentSongsObj, storeObj[randomIndex]);
 };
 
 export const handleInputChange = (parentObj, e) => {
@@ -64,8 +64,8 @@ export const updateProgress = (e) => {
 export const createNewAudio = () => {
   const audio = new Audio();
   audio.classList.add('audio');
-  audio.setAttribute('data-id', currentBirdObj.id);
-  audio.src = currentBirdObj.audio;
+  audio.setAttribute('data-id', currentSongsObj.id);
+  audio.src = currentSongsObj.audio;
   audio.volume = 0.5;
   return audio;
 };
@@ -108,38 +108,43 @@ export const hashChangeEvent = () => {
     console.log(window.location.hash);
     switch (hash) {
       case 'main': 
-        nextObj = birdsObj.start;
+        nextObj = songsObj.classic;
         backToMainPage();
         break;
       case 'start':
-        nextObj = birdsObj.start;
+        nextObj = songsObj.classic;
         // main.remove();
         document.body.replaceChildren();
         createHeader();
         createGame(nextObj);
         break;
-      case 'sparrow':
-        nextObj = birdsObj.sparrow;
+      case 'thrash':
+        nextObj = songsObj.thrash;
         main.remove();
         createGame(nextObj);
         break;
-      case 'woods':
-        nextObj = birdsObj.woods;
+      case 'groove':
+        nextObj = songsObj.groove;
         main.remove();
         createGame(nextObj);
         break;
-      case 'songs':
-        nextObj = birdsObj.songs;
+      case 'stoner':
+        nextObj = songsObj.stoner;
         main.remove();
         createGame(nextObj);
         break;
-      case 'hunters':
-        nextObj = birdsObj.hunters;
+      case 'nu':
+        nextObj = songsObj.nu;
         main.remove();
         createGame(nextObj);
         break;
-      case 'sea':
-        nextObj = birdsObj.sea;
+      case 'progressive':
+        nextObj = songsObj.progressive;
+        main.remove();
+        createGame(nextObj);
+        break;
+      case 'death':
+        nextObj = songsObj.death;
         main.remove();
         createGame(nextObj);
         break;
@@ -156,7 +161,7 @@ export const hashChangeEvent = () => {
 let count = 0;
 
 export const renderNextPage = (nextButton) => {
-  const pages = ['start', 'sparrow', 'woods', 'song', 'hunters', 'sea'];
+  const pages = ['start', 'thrash', 'groove', 'stoner', 'nu', 'progressive', 'death'];
   nextButton.addEventListener('click', () => {
     count++;
     const { hash } = window.location;
@@ -205,13 +210,13 @@ const playAudioWhenWin = () => {
 
 const replaceMainMediaContainer = () => {
   const mediaContainer = document.querySelector('.player-container');
-  const newMediaContainer = createPlayer(currentBirdObj, 'up', true);
+  const newMediaContainer = createPlayer(currentSongsObj, 'up', true);
   mediaContainer.replaceWith(newMediaContainer);
 };
 
 const newDownMediaContainer = () => {
   const downMedia = document.querySelector('.chose-container__right');
-  const newMediaContainer = createPlayer(currentBirdObj, 'down', true);
+  const newMediaContainer = createPlayer(currentSongsObj, 'down', true);
   const description = addDescription();
   addLatinName(newMediaContainer);
   downMedia.replaceChildren();
@@ -234,7 +239,7 @@ export const checkAnswer = (e) => {
       enableNextButton();
       playAudioWhenWin();
       replaceMainMediaContainer();
-      newDownMediaContainer();
+      // newDownMediaContainer();
     } else {
       liEl.classList.add('birds-li__fail');
       liEl.firstChild.classList.add('span-cyrcle__fail');
