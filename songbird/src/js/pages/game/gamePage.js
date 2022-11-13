@@ -18,7 +18,7 @@ const createLi = (text) => {
 };
 
 const createListBirds = () => {
-  const namesArr = ['Разминка', 'Thrash', 'Groove', 'Stoner/Doom', 'Nu', 'Progressive/Djent', 'Death'];
+  const namesArr = ['Classic', 'Thrash', 'Groove', 'Stoner/Doom', 'Nu', 'Progressive/Djent', 'Death'];
   const navContainer = document.createElement('div');
   navContainer.classList.add('birds-container');
   const ul = document.createElement('ul');

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .start-bg {
   background-image: url(../assets/background/dimebag-darrell-background.jpg);
   background-size: cover;
@@ -6,13 +10,14 @@
   position: absolute;
   z-index: 1;
   width: 100vw;
-  height: 100vh;
+  height: 89vh;
   top: 0;
 }
 
 .start-header {
   z-index: 2;
   position: relative;
+  height: 10vh;
 }
 
 .logo-container {
@@ -68,4 +73,54 @@
   &:hover {
     background-color: rgba(255, 255, 255, 0.527);
   }
+}
+
+.footer {
+/*   position: absolute;
+  bottom: 0;
+  z-index: 1; */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient( rgba(119, 119, 119, 0.8), rgba(0, 0, 0, 0.5) ), url(../assets/background/footer_bg.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 1.5rem 1rem 0;
+  // filter: brightness(40%);
+}
+
+.footer-blur {
+  position: absolute;
+  z-index: 2;
+  top: -10px;
+  left: -20px;
+  height: 4vh;
+  width: 120vw;
+  background: black;
+  filter: blur(15px);
+}
+
+.footer-author {
+  text-decoration: none;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family:'Black Ops One';
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+.footer-date {
+  font-family:'Black Ops One';
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-course img {
+  width: 152px;
+  height: 55px;
 }
