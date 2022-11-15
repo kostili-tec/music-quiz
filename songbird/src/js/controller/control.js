@@ -175,6 +175,8 @@ export const renderNextPage = (nextButton) => {
 const enableNextButton = () => {
   const nextButton = document.querySelector('.next-button');
   nextButton.classList.remove('disable-link');
+  nextButton.classList.add('play-animation');
+  nextButton.textContent = 'A New Level!';
 };
 
 const turnOffList = (winId) => {

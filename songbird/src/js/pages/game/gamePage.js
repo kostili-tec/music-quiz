@@ -189,7 +189,7 @@ const createNextButton = () => {
   nextButton.href = '#start';
   renderNextPage(nextButton);
   nextButton.classList.add('next-button', 'disable-link');
-  nextButton.textContent = 'Next Level';
+  nextButton.textContent = 'Pick the song';
   return nextButton;
 };
 
