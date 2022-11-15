@@ -52,19 +52,26 @@ body {
 
 .nav-birds__ul {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   justify-content: space-between;
   list-style: none;
   padding: 0;
-  background-color: rgb(0, 126, 84);
+  // background-color: rgb(0, 126, 84);
   border-radius: 5px;
   & li {
     flex: auto;
     text-align: center;
+    position: relative;
+    // flex-basis: 9.5rem;
+    width: 9.5rem;
+    flex-grow: 1;
+    margin-right: 1rem;
     & span {
+      font-family: 'Rock Salt';
       padding: 0.5rem 0.75rem;
       position: relative;
       display: block;
+      z-index: 2;
     }
   }
 /*   &::before {
@@ -79,6 +86,20 @@ body {
     transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
     border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
   } */
+}
+
+.li-bg {
+  width: 100%;
+  height: 100%;
+  background:rgb(183, 0, 0);
+  background-size: cover;
+  background-position: center center;
+  background-position-x: center;
+  background-position-y: center;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  transform: skewX(-20deg);
 }
 
 .player-container {

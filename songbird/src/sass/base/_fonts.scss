@@ -23,3 +23,15 @@
   font-stretch: normal;
   unicode-range: U+0020-00FE;
 }
+
+@font-face {
+  font-family: 'Rock Salt';
+  src: url('../assets/fonts/RockSalt-Regular.eot');
+  src: url('../assets/fonts/RockSalt-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../assets/fonts/RockSalt-Regular.woff2') format('woff2'),
+      url('../assets/fonts/RockSalt-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+

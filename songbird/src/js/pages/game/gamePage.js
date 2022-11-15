@@ -12,13 +12,15 @@ import { currentBirdObj, currentSongsObj } from '../../store/store';
 const createLi = (text) => {
   const li = document.createElement('li');
   const spanLi = document.createElement('span');
+  const bg = document.createElement('div');
+  bg.classList.add('li-bg');
   spanLi.textContent = text;
-  li.append(spanLi);
+  li.append(spanLi, bg);
   return li;
 };
 
 const createListBirds = () => {
-  const namesArr = ['Classic', 'Thrash', 'Groove', 'Stoner/Doom', 'Nu', 'Progressive/Djent', 'Death'];
+  const namesArr = ['Classic', 'Thrash', 'Groove', 'Stoner/Doom', 'Nu', 'Djent', 'Death'];
   const navContainer = document.createElement('div');
   navContainer.classList.add('birds-container');
   const ul = document.createElement('ul');
