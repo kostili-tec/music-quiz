@@ -8,12 +8,18 @@ body {
   color: #fff;  
 }
 
-.header {
+.game-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+}
+.game-header .logo-h1 {
+  font-size: 2.5rem;
+}
+.game-header .logo-h2 {
+  font-size: 1.5rem;
 }
 
 .link-header {

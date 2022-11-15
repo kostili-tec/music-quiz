@@ -1,7 +1,8 @@
 import { birdsObj, scoreObj, currentBirdObj, songsObj, currentSongsObj } from '../store/store';
 import { createGame, createPlayer, addLatinName, addDescription } from '../pages/game/gamePage';
-import { createHeader, createStartHeader } from '../components/header';
+import { createStartHeader, createGameHeader } from '../components/header';
 import { createWelcome } from '../pages/start/startPage';
+import { createFooter } from '../components/footer';
 
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length - 1));
@@ -94,11 +95,14 @@ export const playButtonEvent = (button, audioEl, parentEl) => {
   });
 };
 
-const backToMainPage = () => {
+export const backToMainPage = () => {
   document.body.replaceChildren();
-  createStartHeader();
-  createWelcome();
+  const header = createStartHeader();
+  const main = createWelcome();
+  const footer = createFooter();
+  document.body.append(header, main, footer);
 }
+
 
 export const hashChangeEvent = () => {
   window.addEventListener('hashchange', () => {
@@ -115,7 +119,9 @@ export const hashChangeEvent = () => {
         nextObj = songsObj.classic;
         // main.remove();
         document.body.replaceChildren();
-        createHeader();
+        const header = createGameHeader();
+        document.body.append(header);
+
         createGame(nextObj);
         break;
       case 'thrash':

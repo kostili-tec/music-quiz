@@ -33,5 +33,6 @@ export const createWelcome = () => {
   main.append(bg, navContainer);
 
   document.body.append(main);
+  return main;
   // document.body.id = 'start-body';
 }
