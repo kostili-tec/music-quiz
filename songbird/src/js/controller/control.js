@@ -107,7 +107,8 @@ export const backToMainPage = () => {
 export const hashChangeEvent = () => {
   window.addEventListener('hashchange', () => {
     let nextObj = null;
-    const main = document.querySelector('.main');
+    let nextMain = null;
+    const main = document.querySelector('.main-game');
     const hash = window.location.hash.slice(1);
     console.log(window.location.hash);
     switch (hash) {
@@ -117,50 +118,45 @@ export const hashChangeEvent = () => {
         break;
       case 'start':
         nextObj = songsObj.classic;
-        // main.remove();
         document.body.replaceChildren();
         const header = createGameHeader();
-        document.body.append(header);
-
-        createGame(nextObj);
+        const bg = document.createElement('div');
+        const footer = createFooter();
+        nextMain = createGame(nextObj);
+        bg.classList.add('game-bg');
+        document.body.append(header, bg, nextMain, footer);
         break;
       case 'thrash':
         nextObj = songsObj.thrash;
-        main.remove();
-        createGame(nextObj);
+        nextMain = createGame(nextObj);
+        main.replaceWith(nextMain);
         break;
       case 'groove':
         nextObj = songsObj.groove;
-        main.remove();
-        createGame(nextObj);
+        nextMain = createGame(nextObj);
+        main.replaceWith(nextMain);
         break;
       case 'stoner':
         nextObj = songsObj.stoner;
-        main.remove();
-        createGame(nextObj);
+        nextMain = createGame(nextObj);
+        main.replaceWith(nextMain);
         break;
       case 'nu':
         nextObj = songsObj.nu;
-        main.remove();
-        createGame(nextObj);
+        nextMain = createGame(nextObj);
+        main.replaceWith(nextMain);
         break;
       case 'progressive':
         nextObj = songsObj.progressive;
-        main.remove();
-        createGame(nextObj);
+        nextMain = createGame(nextObj);
+        main.replaceWith(nextMain);
         break;
       case 'death':
         nextObj = songsObj.death;
-        main.remove();
-        createGame(nextObj);
+        nextMain = createGame(nextObj);
+        main.replaceWith(nextMain);
         break;
-  /*     default:
-        nextObj = birdsObj.start;
-        main.remove();
-        createGame(nextObj);
-        break; */
     }
-
   });
 };
 

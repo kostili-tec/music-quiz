@@ -194,7 +194,7 @@ const createNextButton = () => {
 export const createGame = (storeObj, mainId = 'start') => {
   saveCurrentRandomObj(storeObj);
   const main = document.createElement('main');
-  main.classList.add('main');
+  main.classList.add('main-game');
   main.id = mainId;
   const navContainer = document.createElement('div');
   navContainer.classList.add('birds-container');
@@ -206,4 +206,5 @@ export const createGame = (storeObj, mainId = 'start') => {
 
   main.append(navContainer, mediaContainer, choseCont, nextButton);
   document.body.append(main);
+  return main;
 };

@@ -1,6 +1,6 @@
 export const createWelcome = () => {
   const main = document.createElement('main');
-  main.classList.add('main', 'start-main');
+  main.classList.add('start-main');
 
   const navContainer = document.createElement('nav');
   navContainer.classList.add('nav-start');
@@ -34,5 +34,4 @@ export const createWelcome = () => {
 
   document.body.append(main);
   return main;
-  // document.body.id = 'start-body';
 }

@@ -14,6 +14,9 @@ body {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  z-index: 2;
+  position: relative;
+  height: 10vh;
 }
 .game-header .logo-h1 {
   font-size: 2.5rem;
@@ -27,9 +30,24 @@ body {
   color: white;
 }
 
-.main {
+.game-bg {
+  background-image: url(../assets/background/game-bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  filter: blur(10px);
+  position: absolute;
+  z-index: 0;
+  width: 100vw;
+  height: 89vh;
+  top: 0;
+}
+
+.main-game {
   margin: 0 auto;
   max-width: 1200px;
+  z-index: 2;
+  position: relative;
+  height: 80vh;
 }
 
 .nav-birds__ul {
@@ -49,6 +67,18 @@ body {
       display: block;
     }
   }
+/*   &::before {
+    content: '';
+    border: 2px solid #353535;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+    border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+  } */
 }
 
 .player-container {
