@@ -5,7 +5,7 @@ import { createWelcome } from '../pages/start/startPage';
 import { createFooter } from '../components/footer';
 
 export const saveCurrentRandomObj = (storeObj) => {
-  const randomIndex = Math.floor(Math.random() * (storeObj.length - 1));
+  const randomIndex = Math.floor(Math.random() * (storeObj.length));
   Object.assign(currentSongsObj, storeObj[randomIndex]);
 };
 
