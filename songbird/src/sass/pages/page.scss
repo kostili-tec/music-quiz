@@ -121,8 +121,117 @@ body {
   flex-direction: column;
 }
 .birds-img {
-  width: 200px;
+  width: 158px;
   border-radius: 5px;
+  filter: grayscale(1) contrast(150%);
+}
+
+.cover-container {
+  display: grid;
+  gap: 10px; 
+  grid-template-columns: auto 0 auto;
+  place-items: center;
+  position: relative;
+}
+
+@keyframes anim-img1 {
+  // from {transform: translate(0px, 0px);}
+  100% {transform: translate(10px, 10px);}
+}
+@keyframes anim-img2 {
+  from {transform: translate(0px, 0px);}
+  to {transform: translate(0px, 10px);}
+}
+@keyframes anim-img3 {
+  from {transform: translate(0px, 0px);}
+  to {transform: translate(-10px, 10px);}
+}
+@keyframes anim-img4 {
+  from {transform: translate(0px, 0px);}
+  to {transform: translate(-10px, -10px);}
+}
+@keyframes anim-img5 {
+  from {transform: translate(0px, 0px);}
+  to {transform: translate(0px, -10px);}
+}
+@keyframes anim-img6 {
+  from {transform: translate(0px, 0px);}
+  to {transform: translate(10px, -10px);}
+}
+
+@keyframes anim-opacity {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.hide-cover {
+  animation: anim-opacity 0.3s ease-in 0.25s forwards;
+}
+
+.anim1 {
+  // animation-name: anim-img1, anim-opacity ;
+  // animation-duration: 0.5s;
+  // animation-delay: 0.25s;
+  // animation-timing-function: ease-in-out;
+  // animation-iteration-count: 2;
+  // animation-direction: alternate;
+  animation: anim-img1 0.3s ease-in-out 2 alternate;
+}
+.anim2 {
+  animation: anim-img2 0.3s ease-in-out 2 alternate;
+}
+.anim3 {
+  animation: anim-img3 0.3s ease-in-out 2 alternate;
+}
+.anim6 {
+  animation: anim-img4 0.3s ease-in-out 2 alternate;
+}
+.anim5 {
+  animation: anim-img5 0.3s ease-in-out 2 alternate;
+}
+.anim4 {
+  animation: anim-img6 0.3s ease-in-out 2 alternate;
+}
+
+.cover-img {
+  width: 69px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: .35s;
+  z-index: 2;
+  // filter: grayscale();
+  // cursor: pointer;
+}
+
+.cover-container > img:nth-child(1) {
+  clip-path: polygon(0 0,50% 0,100% 100%,0 100%);
+}
+.cover-container > img:nth-child(2) {
+  clip-path: polygon(0 0,100% 0,50% 100%);
+}
+.cover-container > img:nth-child(3) {
+  clip-path: polygon(50% 0,100% 0,100% 100%,0 100%);
+}
+.cover-container > img:nth-child(4) {
+  clip-path: polygon(0 0,100% 0,50% 100%,0 100%);
+}
+.cover-container > img:nth-child(5) {
+  clip-path: polygon(50% 0,100% 100%,0% 100%);
+}
+.cover-container > img:nth-child(6) {
+  clip-path: polygon(0 0,100% 0,100% 100%,50% 100%);
+}
+
+.win-cover {
+  position: absolute;
+  width: 133px;
+  transition: all 0.5s ease-in-out;
+  transform: scale(0.5);
+  opacity: 0;
+}
+.win-cover__show {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 .right-container { 
@@ -155,7 +264,7 @@ body {
   border: 2px solid;
   border-radius: 50%;
   background-color: transparent;
-  border-color: rgb(0, 151, 139);
+  border-color: rgb(204, 0, 0);;
   padding: 0;
   cursor: pointer;
 }
@@ -163,7 +272,7 @@ body {
 .audio-svg {
   width: 20px;
   height: 20px;
-  fill: rgb(0, 151, 139);
+  fill: rgb(204, 0, 0);
 }
 #audio-stop {
   height: 14px;

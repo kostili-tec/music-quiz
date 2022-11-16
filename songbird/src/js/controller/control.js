@@ -212,15 +212,30 @@ const playAudioWhenWin = () => {
   weweAudio.play();
 };
 
+const showName = () => {
+  const nameH3 = document.querySelector('.name-bird__h3');
+  nameH3.textContent = currentSongsObj.name;
+};
+
 const replaceMainMediaContainer = () => {
-  const mediaContainer = document.querySelector('.player-container');
-  const newMediaContainer = createPlayer(currentSongsObj, 'up', true);
-  mediaContainer.replaceWith(newMediaContainer);
+/*   const newMediaContainer = createPlayer(currentSongsObj, 'up', true);
+  mediaContainer.replaceWith(newMediaContainer); */
+  const covers = document.querySelectorAll('.cover-img');
+  const winCover = document.querySelector('.win-cover');
+  covers.forEach((cover, ind) => {
+    cover.addEventListener('animationend', (e) => {
+      winCover.classList.add('win-cover__show');
+      e.target.classList.remove(`anim${ind+1}`);
+      e.target.classList.add('hide-cover');
+      showName();
+    })
+    cover.classList.add(`anim${ind+1}`, 'hide-cover');
+  })
 };
 
 const newDownMediaContainer = () => {
   const downMedia = document.querySelector('.chose-container__right');
-  const newMediaContainer = createPlayer(currentSongsObj, 'down', true);
+  const newMediaContainer = createPlayer(currentSongsObj, 'down', true); // bool was removed
   const description = addDescription();
   addLatinName(newMediaContainer);
   downMedia.replaceChildren();

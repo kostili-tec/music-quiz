@@ -30,13 +30,41 @@ const createListBirds = () => {
   return ul;
 };
 
-export const createPlayer = (storeObj, additionClass, isShow = false) => {
+const createTriangularCover = (fullObj) => {
+  const coverCont = document.createElement('div');
+  coverCont.classList.add('cover-container');
+  fullObj.forEach((el) => {
+    const img = document.createElement('img');
+    img.classList.add('cover-img');
+    img.src = el.image;
+    img.setAttribute('data-id', el.id);
+    coverCont.append(img);
+  })
+  return coverCont;
+};
+
+const createCover = (currentObj) => {
+  const coverCont = document.createElement('div');
+  coverCont.classList.add('cover-container__full');
+  const img = document.createElement('img');
+  img.classList.add('cover-img__full');
+  img.src = currentObj.image;
+  coverCont.append(img);
+  return coverCont;
+}
+
+export const createPlayer = (currentObj, fullObj, additionClass) => {
+  console.log(currentSongsObj);
   const playerContainer = document.createElement('div');
   playerContainer.classList.add('player-container', `player-container__${additionClass}`);
 
-  const birdImg = document.createElement('img');
-  birdImg.classList.add('birds-img');
-  birdImg.src = './copies/bird.jpg';
+  const cover = createTriangularCover(fullObj);  
+
+  const winCover = document.createElement('img');
+  winCover.classList.add('win-cover');
+  winCover.src = currentObj.image; 
+
+  cover.append(winCover);
 
   const rightContainer = document.createElement('div');
   rightContainer.classList.add('right-container');
@@ -48,7 +76,7 @@ export const createPlayer = (storeObj, additionClass, isShow = false) => {
   const audioPlayer = document.createElement('div');
   audioPlayer.classList.add('audio-container');
 
-  const audio = createNewAudio(storeObj);
+  const audio = createNewAudio(currentObj);
   playerContainer.append(audio);
   audio.addEventListener('timeupdate', fillProgress.bind(null, playerContainer));
 
@@ -118,13 +146,7 @@ export const createPlayer = (storeObj, additionClass, isShow = false) => {
   audioPlayer.append(playButton, progressContainer);
   rightContainer.append(nameBird, audioPlayer);
 
-  playerContainer.append(birdImg, rightContainer);
-
-  if (isShow === true) {
-    birdImg.src = storeObj.image;
-    nameBird.textContent = storeObj.name;
-  }
-
+  playerContainer.append(cover, rightContainer);
   return playerContainer;
 };
 
@@ -202,9 +224,10 @@ export const createGame = (storeObj, mainId = 'start') => {
   navContainer.classList.add('birds-container');
   navContainer.append(createListBirds());
 
-  const mediaContainer = createPlayer(currentSongsObj, 'up', false);
+  const mediaContainer = createPlayer(currentSongsObj, storeObj, 'up');
   const choseCont = createChoseContainer(storeObj);
   const nextButton = createNextButton();
+  console.log(storeObj);
 
   main.append(navContainer, mediaContainer, choseCont, nextButton);
   document.body.append(main);
