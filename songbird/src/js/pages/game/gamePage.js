@@ -6,6 +6,7 @@ import {
   renderNextPage,
   checkAnswer,
   handleInputChange,
+  handleInputVolumeChange
 } from '../../controller/control';
 import { currentBirdObj, currentSongsObj } from '../../store/store';
 
@@ -100,7 +101,7 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
   inputProgress.value = 0;
   inputProgress.min = 0;
   inputProgress.max = 100;
-  inputProgress.classList.add('input-progress');
+  inputProgress.classList.add('input-progress', 'input-progress__audio');
   inputProgress.id = 'range-progress';
 
   inputProgress.addEventListener('input', handleInputChange.bind(null, playerContainer));
@@ -121,6 +122,7 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
 
   inputVolume.classList.add('input-progress');
   inputVolume.id = 'volume-progress';
+  inputVolume.addEventListener('input', handleInputVolumeChange.bind(null, audio));
 
   volumeContainer.append(volumeSvg, inputVolume);
 

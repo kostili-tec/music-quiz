@@ -23,11 +23,20 @@ export const handleInputChange = (parentObj, e) => {
   target.style.backgroundSize = `${(val - min) * 100 / (max - min)}% 100%`;
 };
 
+export const handleInputVolumeChange = (audioEl, e) => {
+  let { target } = e;
+  const { min } = target;
+  const { max } = target;
+  const val = target.value;
+  audioEl.volume = Number(target.value / 100);
+  target.style.backgroundSize = `${(val - min) * 100 / (max - min)}% 100%`;
+}
+
 export const fillProgress = (parentObj, e) => {
   const audio = e.target;
   const currentTime = parentObj.querySelector('.audio-current');
   const lengthTime = parentObj.querySelector('.audio-end');
-  const progress = parentObj.querySelector('.input-progress');
+  const progress = parentObj.querySelector('.input-progress__audio');
 
   progress.value = audio.currentTime / audio.duration * 100;
   const { min } = progress;
