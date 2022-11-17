@@ -103,6 +103,14 @@ export const backToMainPage = () => {
   document.body.append(header, main, footer);
 }
 
+const highlightCategory = (number) => {
+  const li = document.querySelectorAll('.nav__li');
+  console.log(li[number]);
+  li[number].classList.add('highlight-box');
+  li[number].lastChild.classList.add('li-bg__active');
+}
+
+let numberPage = -1;
 
 export const hashChangeEvent = () => {
   window.addEventListener('hashchange', () => {
@@ -111,6 +119,14 @@ export const hashChangeEvent = () => {
     const main = document.querySelector('.main-game');
     const hash = window.location.hash.slice(1);
     console.log(window.location.hash);
+    if (hash !== 'main') {
+      numberPage++;
+      console.log(numberPage);
+    } else {
+      numberPage = -1;
+      console.log(numberPage);
+    }
+    
     switch (hash) {
       case 'main': 
         nextObj = songsObj.classic;
@@ -125,36 +141,43 @@ export const hashChangeEvent = () => {
         nextMain = createGame(nextObj);
         bg.classList.add('game-bg');
         document.body.append(header, bg, nextMain, footer);
+        highlightCategory(numberPage);
         break;
       case 'thrash':
         nextObj = songsObj.thrash;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
+        highlightCategory(numberPage);
         break;
       case 'groove':
         nextObj = songsObj.groove;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
+        highlightCategory(numberPage);
         break;
       case 'stoner':
         nextObj = songsObj.stoner;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
+        highlightCategory(numberPage);
         break;
       case 'nu':
         nextObj = songsObj.nu;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
+        highlightCategory(numberPage);
         break;
       case 'progressive':
         nextObj = songsObj.progressive;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
+        highlightCategory(numberPage);
         break;
       case 'death':
         nextObj = songsObj.death;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
+        highlightCategory(numberPage);
         break;
     }
   });
@@ -165,6 +188,7 @@ let count = 0;
 export const renderNextPage = (nextButton) => {
   const pages = ['start', 'thrash', 'groove', 'stoner', 'nu', 'progressive', 'death'];
   nextButton.addEventListener('click', () => {
+    highlightCategory(count);
     count++;
     const { hash } = window.location;
     console.log(hash);

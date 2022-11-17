@@ -11,6 +11,7 @@ import { currentBirdObj, currentSongsObj } from '../../store/store';
 
 const createLi = (text) => {
   const li = document.createElement('li');
+  li.classList.add('nav__li');
   const spanLi = document.createElement('span');
   const bg = document.createElement('div');
   bg.classList.add('li-bg');
@@ -20,7 +21,7 @@ const createLi = (text) => {
 };
 
 const createListBirds = () => {
-  const namesArr = ['Classic', 'Thrash', 'Groove', 'Stoner/Doom', 'Nu', 'Djent', 'Death'];
+  const namesArr = ['Classic', 'Thrash', 'Groove', 'Stoner/Doom', 'Nu', 'Prog/Djent', 'Death'];
   const navContainer = document.createElement('div');
   navContainer.classList.add('birds-container');
   const ul = document.createElement('ul');

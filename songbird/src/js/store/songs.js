@@ -321,7 +321,7 @@ const songsData = [
       name: 'Necrophagist - Advanced Corpse Tumor',
       species: '',
       description: '',
-      image: './copies/playlist/death/cover/onset_of_putrefaction.jpg.jpg',
+      image: './copies/playlist/death/cover/onset_of_putrefaction.jpg',
       audio: './copies/playlist/death/necrophagist_-_advanced_corpse_tumor.mp3',
     },
     {
