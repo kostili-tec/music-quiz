@@ -292,7 +292,7 @@ export const addLatinName = (parendNode) => {
 export const addDescription = (id) => {
   const description = document.createElement('p');
   description.textContent = currentSongObj.currentObj[id].descriptionEn;
-  description.classList.add('description-birds');
+  description.classList.add('description-song');
   return description;
 }
 
