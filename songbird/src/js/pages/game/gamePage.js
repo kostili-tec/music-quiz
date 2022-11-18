@@ -1,6 +1,7 @@
 import {
   saveCurrentRandomObj, 
-  createNewAudio, 
+  createNewAudio,
+  createPickedAudio, 
   fillProgress,
   playButtonEvent,
   renderNextPage,
@@ -8,7 +9,7 @@ import {
   handleInputChange,
   handleInputVolumeChange
 } from '../../controller/control';
-import { currentBirdObj, currentSongsObj } from '../../store/store';
+import { currentBirdObj, currentSongsObj, currentSongObj } from '../../store/store';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -56,7 +57,8 @@ const createCover = (currentObj) => {
 }
 
 export const createPlayer = (currentObj, fullObj, additionClass) => {
-  console.log(currentSongsObj);
+  console.log(currentSongObj.currentSong);
+  console.log(currentSongObj.currentObj);
   const playerContainer = document.createElement('div');
   playerContainer.classList.add('player-container', `player-container__${additionClass}`);
 
@@ -73,7 +75,7 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
 
   const nameBird = document.createElement('h3');
   nameBird.textContent = '*******';
-  nameBird.classList.add('name-bird__h3');
+  nameBird.classList.add('name-song__h3');
 
   const audioPlayer = document.createElement('div');
   audioPlayer.classList.add('audio-container');
@@ -153,6 +155,98 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
   return playerContainer;
 };
 
+export const createPickedSong = (id) => {
+  const obj = currentSongObj.currentObj[id];
+  const currentId = id--;
+  const playerContainer = document.createElement('div');
+  playerContainer.classList.add('player-container', `player-container__down`);
+  const cover = createCover(obj);
+
+  const rightContainer = document.createElement('div');
+  rightContainer.classList.add('right-container');
+
+  const nameBird = document.createElement('h3');
+  nameBird.textContent = obj.name;
+  nameBird.classList.add('name-song__h3');
+
+  const audioPlayer = document.createElement('div');
+  audioPlayer.classList.add('audio-container');
+
+  const audio = createPickedAudio(obj);
+  playerContainer.append(audio);
+  audio.addEventListener('timeupdate', fillProgress.bind(null, playerContainer));
+
+  const playButton = document.createElement('button');
+  playButton.classList.add('play-button');
+  playButtonEvent(playButton, audio, playerContainer);
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.classList.add('icon-svg', 'audio-svg');
+  svg.id = 'audio-stop';
+  svg.innerHTML = '<use xlink:href="./copies/sprite.svg#stop-button"></use>';
+
+  playButton.append(svg);
+
+  const progressContainer = document.createElement('div');
+  progressContainer.classList.add('progress-container');
+
+  const inputProgress = document.createElement('input');
+  inputProgress.type = 'range';
+  inputProgress.value = 0;
+  inputProgress.min = 0;
+  inputProgress.max = 100;
+  inputProgress.classList.add('input-progress', 'input-progress__audio');
+  inputProgress.id = 'range-progress';
+
+  inputProgress.addEventListener('input', handleInputChange.bind(null, playerContainer));
+
+  const volumeContainer = document.createElement('div');
+  volumeContainer.classList.add('volume-container');
+
+  const volumeSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  volumeSvg.classList.add('icon-svg', 'audio-svg');
+  volumeSvg.id = 'audio-volume';
+  volumeSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#volume"></use>';
+
+  const inputVolume = document.createElement('input');
+  inputVolume.type = 'range';
+  inputVolume.value = 50;
+  inputVolume.min = 0;
+  inputVolume.max = 100;
+
+  inputVolume.classList.add('input-progress');
+  inputVolume.id = 'volume-progress';
+  inputVolume.addEventListener('input', handleInputVolumeChange.bind(null, audio));
+
+  volumeContainer.append(volumeSvg, inputVolume);
+
+  const timeCointaer = document.createElement('div');
+  timeCointaer.classList.add('time-container');
+
+  const spanContainer = document.createElement('span-container');
+  spanContainer.classList.add('span-container');
+
+  const spanStart = document.createElement('span');
+  const spanEnd = document.createElement('span');
+
+  spanStart.classList.add('audio-current');
+  spanStart.textContent = '00:00';
+  spanEnd.classList.add('audio-end');
+  spanEnd.textContent = '00:00';
+
+  spanContainer.append(spanStart, spanEnd);
+
+  timeCointaer.append(spanStart, spanEnd);
+
+  progressContainer.append(volumeContainer, inputProgress, timeCointaer);
+
+  audioPlayer.append(playButton, progressContainer);
+  rightContainer.append(nameBird, audioPlayer);
+
+  playerContainer.append(cover, rightContainer);
+  return playerContainer;
+}
+
 const createLeftContainer = (storeObj) => {
   const leftContainer = document.createElement('div');
   leftContainer.classList.add('chose-container__left');
@@ -188,16 +282,16 @@ const createRightContainer = () => {
 };
 
 export const addLatinName = (parendNode) => {
-  const nameBirdh3 = parendNode.querySelector('.name-bird__h3');
+  const nameBirdh3 = parendNode.querySelector('.name-song__h3');
   const latinText = document.createElement('h4');
   latinText.textContent = currentBirdObj.species;
-  latinText.classList.add('name-bird__h3', 'font__H4');
+  latinText.classList.add('name-song__h3', 'font__H4');
   nameBirdh3.after(latinText);
 };
 
-export const addDescription = () => {
+export const addDescription = (id) => {
   const description = document.createElement('p');
-  description.textContent = currentBirdObj.description;
+  description.textContent = currentSongObj.currentObj[id].descriptionEn;
   description.classList.add('description-birds');
   return description;
 }
@@ -227,7 +321,7 @@ export const createGame = (storeObj, mainId = 'start') => {
   navContainer.classList.add('birds-container');
   navContainer.append(createListBirds());
 
-  const mediaContainer = createPlayer(currentSongsObj, storeObj, 'up');
+  const mediaContainer = createPlayer(currentSongObj.currentSong, storeObj, 'up');
   const choseCont = createChoseContainer(storeObj);
   const nextButton = createNextButton();
   console.log(storeObj);

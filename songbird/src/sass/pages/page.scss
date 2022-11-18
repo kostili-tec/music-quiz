@@ -156,6 +156,15 @@ body {
   position: relative;
 }
 
+.cover-container__full {
+  width: 158px;
+  height: 158px;
+}
+
+.cover-img__full {
+  width: 100%;
+}
+
 @keyframes anim-img1 {
   // from {transform: translate(0px, 0px);}
   100% {transform: translate(10px, 10px);}
@@ -260,7 +269,7 @@ body {
   display: flex;
 }
 
-.name-bird__h3 {
+.name-song__h3 {
   margin-top: 0;
   margin-bottom: 1rem;
   padding-bottom: 1rem;

@@ -26,6 +26,11 @@ export const getSongs = () => {
 
 export const currentSongsObj = {};
 
+export const currentSongObj = {
+  currentObj: {},
+  currentSong: {},
+}
+
 export const scoreObj = {
   currentScore: 0,
   score: 5,

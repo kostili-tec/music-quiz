@@ -1,12 +1,12 @@
-import { birdsObj, scoreObj, currentBirdObj, songsObj, currentSongsObj } from '../store/store';
-import { createGame, createPlayer, addLatinName, addDescription } from '../pages/game/gamePage';
+import { scoreObj, songsObj, currentSongsObj, currentSongObj } from '../store/store';
+import { createGame, createPlayer, createPickedSong, addLatinName, addDescription } from '../pages/game/gamePage';
 import { createStartHeader, createGameHeader } from '../components/header';
 import { createWelcome } from '../pages/start/startPage';
 import { createFooter } from '../components/footer';
 
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length));
-  Object.assign(currentSongsObj, storeObj[randomIndex]);
+  Object.assign(currentSongObj.currentSong, storeObj[randomIndex]);
 };
 
 export const handleInputChange = (parentObj, e) => {
@@ -74,11 +74,20 @@ export const updateProgress = (e) => {
 export const createNewAudio = () => {
   const audio = new Audio();
   audio.classList.add('audio');
-  audio.setAttribute('data-id', currentSongsObj.id);
-  audio.src = currentSongsObj.audio;
+  audio.setAttribute('data-id', currentSongObj.currentSong.id);
+  audio.src = currentSongObj.currentSong.audio;
   audio.volume = 0.5;
   return audio;
 };
+
+export const createPickedAudio = (obj) => {
+  const audio = new Audio();
+  audio.classList.add('audio');
+  audio.setAttribute('data-id', obj.id);
+  audio.src = obj.audio;
+  audio.volume = 0.5;
+  return audio;
+}
 
 export const playButtonEvent = (button, audioEl, parentEl) => {
   let isPlayed = false;
@@ -114,7 +123,6 @@ export const backToMainPage = () => {
 
 const highlightCategory = (number) => {
   const li = document.querySelectorAll('.nav__li');
-  console.log(li[number]);
   li[number].classList.add('highlight-box');
   li[number].lastChild.classList.add('li-bg__active');
 }
@@ -134,15 +142,16 @@ export const hashChangeEvent = () => {
     } else {
       numberPage = -1;
       console.log(numberPage);
-    }
-    
+    }    
     switch (hash) {
       case 'main': 
         nextObj = songsObj.classic;
+        currentSongObj.currentObj = songsObj.classic;
         backToMainPage();
         break;
       case 'start':
         nextObj = songsObj.classic;
+        currentSongObj.currentObj  = songsObj.classic;
         document.body.replaceChildren();
         const header = createGameHeader();
         const bg = document.createElement('div');
@@ -154,36 +163,42 @@ export const hashChangeEvent = () => {
         break;
       case 'thrash':
         nextObj = songsObj.thrash;
+        currentSongObj.currentObj  = songsObj.thrash;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'groove':
         nextObj = songsObj.groove;
+        currentSongObj.currentObj  = songsObj.groove;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'stoner':
         nextObj = songsObj.stoner;
+        currentSongObj.currentObj  = songsObj.stoner;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'nu':
         nextObj = songsObj.nu;
+        currentSongObj.currentObj  = songsObj.nu;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'progressive':
         nextObj = songsObj.progressive;
+        currentSongObj.currentObj  = songsObj.progressive;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'death':
         nextObj = songsObj.death;
+        currentSongObj.currentObj = songsObj.death;
         nextMain = createGame(nextObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
@@ -246,7 +261,7 @@ const playAudioWhenWin = () => {
 };
 
 const showName = () => {
-  const nameH3 = document.querySelector('.name-bird__h3');
+  const nameH3 = document.querySelector('.name-song__h3');
   nameH3.textContent = currentSongsObj.name;
 };
 
@@ -266,11 +281,12 @@ const replaceMainMediaContainer = () => {
   })
 };
 
-const newDownMediaContainer = () => {
+const newDownMediaContainer = (id) => {
   const downMedia = document.querySelector('.chose-container__right');
-  const newMediaContainer = createPlayer(currentSongsObj, 'down', true); // bool was removed
-  const description = addDescription();
-  addLatinName(newMediaContainer);
+  // const newMediaContainer = createPlayer(currentSongsObj, 'down', true); // bool was removed
+  const newMediaContainer = createPickedSong(id);
+  const description = addDescription(id);
+  // addLatinName(newMediaContainer);
   downMedia.replaceChildren();
   downMedia.append(newMediaContainer, description);
 };
@@ -298,6 +314,7 @@ export const checkAnswer = (e) => {
       reduceScore();
       playAudioWhenFail();
     }
+    newDownMediaContainer(dataId - 1);
   }
 };
 
