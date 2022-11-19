@@ -1,5 +1,5 @@
-import { scoreObj, songsObj, currentSongsObj, currentSongObj } from '../store/store';
-import { createGame, createPlayer, createPickedSong, addLatinName, addDescription } from '../pages/game/gamePage';
+import { scoreObj, songsObj, currentSongsObj, currentSongObj, memesObj } from '../store/store';
+import { createGame, createPickedSong, addDescription } from '../pages/game/gamePage';
 import { createStartHeader, createGameHeader } from '../components/header';
 import { createWelcome } from '../pages/start/startPage';
 import { createFooter } from '../components/footer';
@@ -7,6 +7,12 @@ import { createFooter } from '../components/footer';
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length));
   Object.assign(currentSongObj.currentSong, storeObj[randomIndex]);
+};
+
+export const getRandomMeme = (memeObj) => {
+  const keys = Object.keys(memeObj);
+  console.log(memeObj[keys[ keys.length * Math.random() << 0]]);
+  return memeObj[keys[ keys.length * Math.random() << 0]];
 };
 
 export const handleInputChange = (parentObj, e) => {
@@ -133,6 +139,7 @@ export const hashChangeEvent = () => {
   window.addEventListener('hashchange', () => {
     let nextObj = null;
     let nextMain = null;
+    let nextMemeObj = null;
     const main = document.querySelector('.main-game');
     const hash = window.location.hash.slice(1);
     console.log(window.location.hash);
@@ -151,55 +158,62 @@ export const hashChangeEvent = () => {
         break;
       case 'start':
         nextObj = songsObj.classic;
+        nextMemeObj = memesObj.classic;
         currentSongObj.currentObj  = songsObj.classic;
         document.body.replaceChildren();
         const header = createGameHeader();
         const bg = document.createElement('div');
         const footer = createFooter();
-        nextMain = createGame(nextObj);
+        nextMain = createGame(nextObj, nextMemeObj);
         bg.classList.add('game-bg');
         document.body.append(header, bg, nextMain, footer);
         highlightCategory(numberPage);
         break;
       case 'thrash':
         nextObj = songsObj.thrash;
+        nextMemeObj = memesObj.thrash;
         currentSongObj.currentObj  = songsObj.thrash;
-        nextMain = createGame(nextObj);
+        nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'groove':
         nextObj = songsObj.groove;
-        currentSongObj.currentObj  = songsObj.groove;
-        nextMain = createGame(nextObj);
+        currentSongObj.currentObj = songsObj.groove;
+        nextMemeObj = memesObj.groove;
+        nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'stoner':
         nextObj = songsObj.stoner;
-        currentSongObj.currentObj  = songsObj.stoner;
-        nextMain = createGame(nextObj);
+        currentSongObj.currentObj = songsObj.stoner;
+        nextMemeObj = memesObj.stoner;
+        nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'nu':
         nextObj = songsObj.nu;
         currentSongObj.currentObj  = songsObj.nu;
-        nextMain = createGame(nextObj);
+        nextMemeObj = memesObj.nu;
+        nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'progressive':
         nextObj = songsObj.progressive;
         currentSongObj.currentObj  = songsObj.progressive;
-        nextMain = createGame(nextObj);
+        nextMemeObj = memesObj.progressive;
+        nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
       case 'death':
         nextObj = songsObj.death;
         currentSongObj.currentObj = songsObj.death;
-        nextMain = createGame(nextObj);
+        nextMemeObj = memesObj.death;
+        nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;

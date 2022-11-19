@@ -443,6 +443,14 @@ body {
   pointer-events: none;
 }
 
+.meme-container {
+  max-height: 384px;
+}
+.meme-img {
+  width: 100%;
+  max-height: 384px;
+}
+
 @keyframes fade-out {
   from { background-position-x: 100%;}
   to { background-position-x: 0%;}

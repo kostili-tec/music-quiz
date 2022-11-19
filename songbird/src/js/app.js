@@ -1,17 +1,12 @@
-import { birdsObj, getBirds, songsObj, getSongs } from './store/store';
+import { getBirds, songsObj, getSongs, getMemes } from './store/store';
 import { backToMainPage, hashChangeEvent, changeUrlOnLoad } from './controller/control';
 
 export const run = () => {
   getBirds();
-  // console.log(birdsObj);
+  getMemes();
   getSongs();
   console.log(songsObj);
   backToMainPage();
-  // createStartHeader();
-  // createWelcome();
-  // addFooter();
-  // createHeader();
-  // createGame(birdsObj.start);
   changeUrlOnLoad();
   hashChangeEvent();
 };

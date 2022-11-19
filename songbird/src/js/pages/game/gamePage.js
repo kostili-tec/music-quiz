@@ -1,5 +1,6 @@
 import {
-  saveCurrentRandomObj, 
+  saveCurrentRandomObj,
+  getRandomMeme,
   createNewAudio,
   createPickedAudio, 
   fillProgress,
@@ -9,7 +10,7 @@ import {
   handleInputChange,
   handleInputVolumeChange
 } from '../../controller/control';
-import { currentBirdObj, currentSongsObj, currentSongObj } from '../../store/store';
+import { currentBirdObj, currentSongObj } from '../../store/store';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -270,14 +271,16 @@ const createLeftContainer = (storeObj) => {
   return leftContainer;
 };
 
-const createRightContainer = () => {
+const createRightContainer = (memeSrc) => {
   const rightContainer = document.createElement('div');
   rightContainer.classList.add('chose-container__right');
-  const pInfo1 = document.createElement('p');
-  const pInfo2 = document.createElement('p');
-  pInfo1.textContent = 'Послушайте плеер.';
-  pInfo2.textContent = 'Выберите птицу из списка';
-  rightContainer.append(pInfo1, pInfo2);
+  const imgCont = document.createElement('div');
+  imgCont.classList.add('meme-container');
+  const memeImg = document.createElement('img');
+  memeImg.classList.add('meme-img');
+  memeImg.src = memeSrc;
+  imgCont.append(memeImg);
+  rightContainer.append(imgCont);
   return rightContainer;
 };
 
@@ -296,10 +299,10 @@ export const addDescription = (id) => {
   return description;
 }
 
-const createChoseContainer = (storeObj) => {
+const createChoseContainer = (storeObj, memeSrc) => {
   const choseContainer = document.createElement('div');
   choseContainer.classList.add('chose-container');
-  choseContainer.append(createLeftContainer(storeObj), createRightContainer());
+  choseContainer.append(createLeftContainer(storeObj), createRightContainer(memeSrc));
   return choseContainer;
 };
 
@@ -312,8 +315,9 @@ const createNextButton = () => {
   return nextButton;
 };
 
-export const createGame = (storeObj, mainId = 'start') => {
+export const createGame = (storeObj, memeObj, mainId = 'start') => {
   saveCurrentRandomObj(storeObj);
+  const randomMemeSrc = getRandomMeme(memeObj);
   const main = document.createElement('main');
   main.classList.add('main-game');
   main.id = mainId;
@@ -322,10 +326,9 @@ export const createGame = (storeObj, mainId = 'start') => {
   navContainer.append(createListBirds());
 
   const mediaContainer = createPlayer(currentSongObj.currentSong, storeObj, 'up');
-  const choseCont = createChoseContainer(storeObj);
+  const choseCont = createChoseContainer(storeObj, randomMemeSrc);
   const nextButton = createNextButton();
   console.log(storeObj);
-
   main.append(navContainer, mediaContainer, choseCont, nextButton);
   document.body.append(main);
   return main;
