@@ -275,8 +275,8 @@ const playAudioWhenWin = () => {
 };
 
 const showName = () => {
-  const nameH3 = document.querySelector('.name-song__h3');
-  nameH3.textContent = currentSongsObj.name;
+  const nameH3 = document.querySelector('#hidden-name');
+  nameH3.textContent = currentSongObj.currentSong.name;
 };
 
 const replaceMainMediaContainer = () => {
@@ -321,6 +321,7 @@ export const checkAnswer = (e) => {
       enableNextButton();
       playAudioWhenWin();
       replaceMainMediaContainer();
+      showName();
       // newDownMediaContainer();
     } else {
       liEl.classList.add('birds-li__fail');

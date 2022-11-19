@@ -74,9 +74,10 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
   const rightContainer = document.createElement('div');
   rightContainer.classList.add('right-container');
 
-  const nameBird = document.createElement('h3');
-  nameBird.textContent = '*******';
-  nameBird.classList.add('name-song__h3');
+  const nameSong = document.createElement('h3');
+  nameSong.textContent = '*******';
+  nameSong.classList.add('name-song__h3');
+  nameSong.id = 'hidden-name';
 
   const audioPlayer = document.createElement('div');
   audioPlayer.classList.add('audio-container');
@@ -150,7 +151,7 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
   progressContainer.append(volumeContainer, inputProgress, timeCointaer);
 
   audioPlayer.append(playButton, progressContainer);
-  rightContainer.append(nameBird, audioPlayer);
+  rightContainer.append(nameSong, audioPlayer);
 
   playerContainer.append(cover, rightContainer);
   return playerContainer;
@@ -166,9 +167,9 @@ export const createPickedSong = (id) => {
   const rightContainer = document.createElement('div');
   rightContainer.classList.add('right-container');
 
-  const nameBird = document.createElement('h3');
-  nameBird.textContent = obj.name;
-  nameBird.classList.add('name-song__h3');
+  const nameSong = document.createElement('h3');
+  nameSong.textContent = obj.name;
+  nameSong.classList.add('name-song__h3');
 
   const audioPlayer = document.createElement('div');
   audioPlayer.classList.add('audio-container');
@@ -242,7 +243,7 @@ export const createPickedSong = (id) => {
   progressContainer.append(volumeContainer, inputProgress, timeCointaer);
 
   audioPlayer.append(playButton, progressContainer);
-  rightContainer.append(nameBird, audioPlayer);
+  rightContainer.append(nameSong, audioPlayer);
 
   playerContainer.append(cover, rightContainer);
   return playerContainer;
