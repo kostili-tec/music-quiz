@@ -1,4 +1,4 @@
-import { scoreObj, songsObj, currentSongsObj, currentSongObj, memesObj } from '../store/store';
+import { scoreObj, resetScore, songsObj, currentSongsObj, currentSongObj, memesObj } from '../store/store';
 import { createGame, createPickedSong, addDescription } from '../pages/game/gamePage';
 import { createStartHeader, createGameHeader } from '../components/header';
 import { createWelcome } from '../pages/start/startPage';
@@ -155,6 +155,7 @@ export const hashChangeEvent = () => {
         nextObj = songsObj.classic;
         currentSongObj.currentObj = songsObj.classic;
         backToMainPage();
+        resetScore();
         break;
       case 'start':
         nextObj = songsObj.classic;
@@ -249,15 +250,24 @@ const turnOffList = (winId) => {
   });
 };
 
-const reduceScore = () => {
-  scoreObj.score -= 1;
-  scoreObj.fails += 1;
+const reduceScore = (liElement) => {
+  const dataAt = liElement.getAttribute('ischecked');
+  if (dataAt === 'false') {
+    liElement.setAttribute('ischecked', 'true');
+    scoreObj.score -= 1;
+    scoreObj.fails += 1;
+  }
 };
-const saveScore = () => {
-  scoreObj.currentScore += scoreObj.score;
-  const headerScore = document.querySelector('.score');
-  headerScore.textContent = scoreObj.currentScore;
-  scoreObj.score = 5;
+
+const saveScore = (liElement) => {
+  const dataAt = liElement.getAttribute('ischecked');
+  if (dataAt === 'false') {
+    liElement.setAttribute('ischecked', 'true');
+    scoreObj.currentScore += scoreObj.score;
+    const headerScore = document.querySelector('.score');
+    headerScore.textContent = scoreObj.currentScore;
+    scoreObj.score = 5;
+  }
 };
 
 const playAudioWhenFail = () => {
@@ -316,17 +326,17 @@ export const checkAnswer = (e) => {
     if (dataId === audioId) {
       liEl.classList.add('birds-li__win');
       liEl.firstChild.classList.add('span-cyrcle__win');
-      turnOffList(dataId);
-      saveScore();
+      // turnOffList(dataId);
+      saveScore(liEl);
       enableNextButton();
       playAudioWhenWin();
       replaceMainMediaContainer();
       showName();
       // newDownMediaContainer();
     } else {
-      liEl.classList.add('birds-li__fail');
+      // liEl.classList.add('birds-li__fail');
       liEl.firstChild.classList.add('span-cyrcle__fail');
-      reduceScore();
+      reduceScore(liEl);
       playAudioWhenFail();
     }
     newDownMediaContainer(dataId - 1);

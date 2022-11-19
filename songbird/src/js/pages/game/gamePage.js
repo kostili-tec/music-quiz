@@ -259,6 +259,7 @@ const createLeftContainer = (storeObj) => {
     const liBird = document.createElement('li');
     liBird.classList.add('birds-li');
     liBird.setAttribute('data-id', el.id);
+    liBird.setAttribute('ischecked', 'false');
     const cyrcleSpan = document.createElement('span');
     cyrcleSpan.classList.add('span-cyrcle');
     const textSpan = document.createElement('span');

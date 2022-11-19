@@ -52,5 +52,11 @@ export const scoreObj = {
   fails: 0,
 };
 
+export const resetScore = () => {
+  scoreObj.currentScore = 0;
+  scoreObj.fails = 0;
+  scoreObj.score = 5;
+}
+
 export const currentObj = {};
 export const currentBirdObj = {};
