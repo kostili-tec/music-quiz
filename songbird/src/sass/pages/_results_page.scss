@@ -1,0 +1,49 @@
+.results-main {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.results-bg {
+  background-image: url('../assets/background/sunn_o)))-bg-corrected.webp');
+  background-size: cover;
+  background-position: center center;
+  filter: blur(10px);
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 89vh;
+  top: 0;
+}
+
+.message-container {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.26);
+  width: 40vw;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.507);
+}
+
+.img-results {
+  border: 2px solid rgba(255, 255, 255, 0.26);
+  width: 100%;
+}
+
+.p-results {
+  font-size: 2rem;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-result {
+  width: 130px;
+}

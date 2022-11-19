@@ -3,6 +3,7 @@ import { createGame, createPickedSong, addDescription } from '../pages/game/game
 import { createStartHeader, createGameHeader } from '../components/header';
 import { createWelcome } from '../pages/start/startPage';
 import { createFooter } from '../components/footer';
+import { createResultsPage } from '../pages/result/resultsPage';
 
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length));
@@ -138,7 +139,7 @@ let numberPage = -1;  // магические числа которые я бо�
 let numberRenderedPage = 0;
 
 export const renderNextPage = (nextButton) => {
-  const pages = ['start', 'thrash', 'groove', 'stoner', 'nu', 'progressive', 'death'];
+  const pages = ['start', 'thrash', 'groove', 'stoner', 'nu', 'progressive', 'death', 'results'];
   nextButton.addEventListener('click', () => {
     highlightCategory(numberRenderedPage);
     numberRenderedPage++;
@@ -232,6 +233,11 @@ export const hashChangeEvent = () => {
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
         break;
+      case 'results':
+        document.body.replaceChildren();
+        const resultsEl = createResultsPage(scoreObj.currentScore);
+        const footerRes = createFooter();
+        document.body.append(resultsEl, footerRes);
     }
   });
 };
@@ -348,7 +354,6 @@ export const checkAnswer = (e) => {
 
 export const changeUrlOnLoad = () => {
   window.addEventListener('load', () => {
-    // const hash = window.location.hash.slice(1);
     window.location.hash = '#main';
   })
 }
