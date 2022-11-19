@@ -88,7 +88,7 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
 
   const playButton = document.createElement('button');
   playButton.classList.add('play-button');
-  playButtonEvent(playButton, audio, playerContainer);
+  playButtonEvent(playButton, audio);
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg', 'audio-svg');
@@ -180,7 +180,7 @@ export const createPickedSong = (id) => {
 
   const playButton = document.createElement('button');
   playButton.classList.add('play-button');
-  playButtonEvent(playButton, audio, playerContainer);
+  playButtonEvent(playButton, audio);
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg', 'audio-svg');

@@ -4,6 +4,7 @@ import { createStartHeader, createGameHeader } from '../components/header';
 import { createWelcome } from '../pages/start/startPage';
 import { createFooter } from '../components/footer';
 import { createResultsPage } from '../pages/result/resultsPage';
+import { createArchivePage } from '../pages/archivePage';
 
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length));
@@ -96,16 +97,16 @@ export const createPickedAudio = (obj) => {
   return audio;
 }
 
-export const playButtonEvent = (button, audioEl, parentEl) => {
+export const playButtonEvent = (button, audioEl) => {
   let isPlayed = false;
   audioEl.addEventListener('ended', () => {
-    const audioSvg = parentEl.querySelector('.audio-svg ');
+    const audioSvg = button.firstChild;
     audioSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#stop-button"></use>';
     audioSvg.id = 'audio-stop';
     isPlayed = false;
   });
   button.addEventListener('click', () => {
-    const audioSvg = parentEl.querySelector('.audio-svg ');
+    const audioSvg = button.firstChild;
     if (!isPlayed) {
       isPlayed = true;
       audioEl.play();
@@ -171,6 +172,9 @@ export const hashChangeEvent = () => {
         currentSongObj.currentObj = songsObj.classic;
         backToMainPage();
         resetScore();
+        break;
+      case 'archive': 
+        createArchivePage();
         break;
       case 'start':
         nextObj = songsObj.classic;
