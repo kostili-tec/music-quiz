@@ -133,7 +133,20 @@ const highlightCategory = (number) => {
   li[number].lastChild.classList.add('li-bg__active');
 }
 
-let numberPage = -1;
+let numberPage = -1;  // магические числа которые я боюсь трогать
+
+let numberRenderedPage = 0;
+
+export const renderNextPage = (nextButton) => {
+  const pages = ['start', 'thrash', 'groove', 'stoner', 'nu', 'progressive', 'death'];
+  nextButton.addEventListener('click', () => {
+    highlightCategory(numberRenderedPage);
+    numberRenderedPage++;
+    const { hash } = window.location;
+    console.log(hash);
+    nextButton.href = `#${pages[numberRenderedPage]}`;
+  });
+};
 
 export const hashChangeEvent = () => {
   window.addEventListener('hashchange', () => {
@@ -148,6 +161,7 @@ export const hashChangeEvent = () => {
       console.log(numberPage);
     } else {
       numberPage = -1;
+      numberRenderedPage = 0
       console.log(numberPage);
     }    
     switch (hash) {
@@ -222,18 +236,6 @@ export const hashChangeEvent = () => {
   });
 };
 
-let count = 0;
-
-export const renderNextPage = (nextButton) => {
-  const pages = ['start', 'thrash', 'groove', 'stoner', 'nu', 'progressive', 'death'];
-  nextButton.addEventListener('click', () => {
-    highlightCategory(count);
-    count++;
-    const { hash } = window.location;
-    console.log(hash);
-    nextButton.href = `#${pages[count]}`;
-  });
-};
 
 const enableNextButton = () => {
   const nextButton = document.querySelector('.next-button');
