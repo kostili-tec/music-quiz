@@ -70,7 +70,11 @@ export const fillProgress = (parentObj, e) => {
   if (secsFull < 10) {
     secsFull = `0${secsFull}`;
   }
-  lengthTime.textContent = `${minsFull}:${secsFull}`;
+
+  if (audio.readyState === 4) {   // костыль
+    lengthTime.textContent = `${minsFull}:${secsFull}`;  
+  }
+
 };
 
 export const updateProgress = (e) => {
@@ -157,6 +161,7 @@ export const hashChangeEvent = () => {
     let nextMemeObj = null;
     const main = document.querySelector('.main-game');
     const hash = window.location.hash.slice(1);
+    const footer111 = createFooter();
     console.log(window.location.hash);
     if (hash !== 'main') {
       numberPage++;
@@ -174,7 +179,12 @@ export const hashChangeEvent = () => {
         resetScore();
         break;
       case 'archive': 
-        createArchivePage();
+        document.body.replaceChildren();
+        const archiveHeader = createStartHeader();
+        const archiveMain =  createArchivePage();
+        const archiveBg = document.createElement('div');
+        archiveBg.classList.add('game-bg');
+        document.body.append(archiveHeader ,archiveBg, archiveMain, footer111);
         break;
       case 'start':
         nextObj = songsObj.classic;

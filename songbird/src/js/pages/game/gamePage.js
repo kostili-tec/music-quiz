@@ -47,7 +47,7 @@ const createTriangularCover = (fullObj) => {
   return coverCont;
 };
 
-const createCover = (currentObj) => {
+export const createCover = (currentObj) => {
   const coverCont = document.createElement('div');
   coverCont.classList.add('cover-container__full');
   const img = document.createElement('img');
