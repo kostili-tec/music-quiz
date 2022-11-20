@@ -187,6 +187,7 @@ export const hashChangeEvent = () => {
         document.body.append(archiveHeader ,archiveBg, archiveMain, footer111);
         break;
       case 'start':
+        resetScore();
         nextObj = songsObj.classic;
         nextMemeObj = memesObj.classic;
         currentSongObj.currentObj  = songsObj.classic;
@@ -252,6 +253,8 @@ export const hashChangeEvent = () => {
         const resultsEl = createResultsPage(scoreObj.currentScore);
         const footerRes = createFooter();
         document.body.append(resultsEl, footerRes);
+        numberPage = -1;
+        numberRenderedPage = 0
     }
   });
 };
