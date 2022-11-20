@@ -271,12 +271,12 @@ const songsData = [
     },
     {
       id: 6,
-      name: 'Monolord - Empress Rising',
+      name: 'Sleep - Dragonaut',
       species: '',
-      descriptionEn: 'Monolord is a Swedish group of Goetheborg, formed in 2013, performing a traction Stoner/doom Metal. Name in honor of the deaf in one ear of a friend, who, according to them, is fat and irritable as Cartman.',
-      descriptionRu: 'Monolord - шведская группа из Гётеборга , образованная в 2013 году, исполняющие тягучий Stoner/Doom Metal. Названы в честь глухого на одно ухо друга, который по их словам жирный и раздражительный как Картман.',
-      image: './copies/playlist/stoner/cover//empress_rising.jpg',
-      audio: './copies/playlist/stoner/empress_rising.mp3',
+      descriptionEn: ' Sleep is an American doom metal power trio from San Jose, California. The band earned critical and record label attention early in its career. Critic Eduardo Rivadavia describes them as "perhaps the ultimate stoner rock band" and notes they exerted a strong influence on heavy metal in the 1990s. However, conflict with its record company contributed to Sleep\'s breakup by the end of the decade. The band reformed in 2009 and has played sporadic live dates internationally since. In 2018, Sleep released their fourth and comeback album, The Sciences, to critical acclaim.',
+      descriptionRu: '',
+      image: './copies/playlist/stoner/cover/holy_mountain.jpg',
+      audio: './copies/playlist/stoner/sleep_-_dragonaut.mp3',
     },
   ],
   [
