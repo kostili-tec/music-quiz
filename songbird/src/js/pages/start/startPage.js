@@ -10,11 +10,6 @@ export const createWelcome = () => {
   startButton.href = '#start';
   startButton.textContent = 'Start';
 
-  const results = document.createElement('a');
-  results.classList.add('button', 'results-button');
-  results.href = '#results';
-  results.textContent = 'Results';
-
   const archive = document.createElement('a');
   archive.classList.add('button', 'archive-button');
   archive.href = '#archive';
@@ -27,11 +22,10 @@ export const createWelcome = () => {
   const bg = document.createElement('div');
   bg.classList.add('start-bg');
 
-  
-  navContainer.append(startButton, results, archive, disclaimer);
+  navContainer.append(startButton, archive, disclaimer);
 
   main.append(bg, navContainer);
 
   document.body.append(main);
   return main;
-}
+};
