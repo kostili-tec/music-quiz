@@ -5,12 +5,16 @@ import {
   createPickedAudio,
   fillProgress,
   playButtonEvent,
+  playButtonGameEvent,
+  audioEventGame,
   renderNextPage,
   checkAnswer,
   handleInputChange,
   handleInputVolumeChange,
 } from '../../controller/control';
 import { currentSongObj } from '../../store/store';
+
+import { audioEvent, playButtonArchiveEvent } from '../../controller/controllArchive';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -81,12 +85,17 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
   audioPlayer.classList.add('audio-container');
 
   const audio = createNewAudio(currentObj);
+  audio.id = 'audio__up';
   playerContainer.append(audio);
   audio.addEventListener('timeupdate', fillProgress.bind(null, playerContainer));
 
   const playButton = document.createElement('button');
   playButton.classList.add('play-button');
-  playButtonEvent(playButton, audio);
+  playButton.id = 'play-button__up';
+  // playButtonEvent(playButton, audio);
+  playButtonGameEvent(playButton, audio)
+  audioEventGame(audio, playButton);
+  
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg', 'audio-svg');
@@ -173,12 +182,17 @@ export const createPickedSong = (id) => {
   audioPlayer.classList.add('audio-container');
 
   const audio = createPickedAudio(obj);
+  audio.id = 'audio__down';
+
   playerContainer.append(audio);
   audio.addEventListener('timeupdate', fillProgress.bind(null, playerContainer));
 
   const playButton = document.createElement('button');
   playButton.classList.add('play-button');
-  playButtonEvent(playButton, audio);
+  playButton.id = 'play-button__down';
+  // playButtonEvent(playButton, audio);
+  playButtonGameEvent(playButton, audio);
+  audioEventGame(audio, playButton);
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg', 'audio-svg');

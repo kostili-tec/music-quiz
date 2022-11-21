@@ -372,3 +372,48 @@ export const changeUrlOnLoad = () => {
     window.location.hash = '#main';
   });
 };
+
+export const playButtonGameEvent = (button, audioEl) => {
+  button.addEventListener('click', () => {
+    if (audioEl.paused === false) {
+      audioEl.pause();
+    } else {
+      audioEl.play();
+    }
+  });
+};
+
+const buttonPause = (button) => {
+  const audioSvg = button.firstChild;
+  audioSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#pause-button"></use>';
+  audioSvg.id = '';
+};
+
+const buttonPlay = (button) => {
+  const audioSvg = button.firstChild;
+  audioSvg.innerHTML = '<use xlink:href="./copies/sprite.svg#play-button"></use>';
+  audioSvg.id = 'audio-play';
+};
+
+export const audioEventGame = (audioEl, buttonEl) => {
+    audioEl.addEventListener('play', () => {
+      if (audioEl.id === 'audio__up') {
+        const audioDown = document.querySelector('#audio__down');
+        console.log(audioDown);
+        if (audioDown !== null && !audioDown.paused) {        
+          audioDown.pause();          
+        }
+      }
+      if (audioEl.id === 'audio__down') {
+        const audioUp = document.querySelector('#audio__up');
+        if (audioUp !== null && !audioUp.paused) {
+          audioUp.pause();
+        }
+      }
+      buttonPause(buttonEl);
+    });
+    audioEl.addEventListener('pause', () => {
+      buttonPlay(buttonEl);
+    });
+  };
+  
