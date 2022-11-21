@@ -169,7 +169,7 @@ export const createPickedSong = (id) => {
 
   const nameSong = document.createElement('h3');
   nameSong.textContent = obj.name;
-  nameSong.classList.add('name-song__h3');
+  nameSong.classList.add('name-song__h3', 'name-song__h3-second');
 
   const audioPlayer = document.createElement('div');
   audioPlayer.classList.add('audio-container');
@@ -284,14 +284,6 @@ const createRightContainer = (memeSrc) => {
   imgCont.append(memeImg);
   rightContainer.append(imgCont);
   return rightContainer;
-};
-
-export const addLatinName = (parendNode) => {
-  const nameBirdh3 = parendNode.querySelector('.name-song__h3');
-  const latinText = document.createElement('h4');
-  latinText.textContent = currentBirdObj.species;
-  latinText.classList.add('name-song__h3', 'font__H4');
-  nameBirdh3.after(latinText);
 };
 
 export const addDescription = (id) => {

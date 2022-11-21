@@ -167,7 +167,8 @@ body {
 }
 
 .cover-img__full {
-  width: 100%;
+  width: 158px;
+  height: 158px;
 }
 
 @keyframes anim-img1 {
@@ -283,6 +284,9 @@ body {
   font-size: 2rem;
   border-bottom: 1px solid rgb(85, 85, 85);
 }
+.name-song__h3-second {
+  font-size: 1.3rem;
+}
 
 .audio-container {
   display: flex;
@@ -350,6 +354,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
+  height: 384px;
 }
 
 .chose-container__left, 
@@ -361,8 +366,8 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 300px;
-  max-height: 384px;
+  // min-height: 300px;
+  // max-height: 384px;
   // border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 .chose-container__right{
@@ -374,8 +379,15 @@ body {
   text-align: justify;
   overflow-y: scroll;
   cursor: ns-resize;
-  overflow: hidden;
+  // overflow: hidden;
   max-height: 150px;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }    
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
 }
 
 .birds-ul {
