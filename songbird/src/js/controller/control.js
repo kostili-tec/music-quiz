@@ -354,8 +354,7 @@ export const checkAnswer = (e) => {
         playAudioWhenWin();
         replaceMainMediaContainer();
         showName();
-        isAnswered = true;
-        console.log(audio);
+        isAnswered = true;        
         audio.pause();
       } else {
         liEl.firstChild.classList.add('span-cyrcle__fail');
