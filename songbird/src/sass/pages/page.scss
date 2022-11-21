@@ -25,6 +25,9 @@ body {
 .game-header .logo-h2 {
   font-size: 1.5rem;
 }
+.game-header h5 {
+  font-family: 'Chakra Petch Medium';
+}
 
 .link-header {
   text-decoration: none;
@@ -281,6 +284,7 @@ body {
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   font-weight: 500;
+  font-family: 'Chakra Petch Bold';
   line-height: 1.2;
   font-size: 2rem;
   border-bottom: 1px solid rgb(85, 85, 85);
@@ -350,6 +354,9 @@ body {
   margin-top: 1rem;
   width: 100%;
 }
+.time-container span {
+  font-family: 'Chakra Petch Bold';
+}
 
 .chose-container {
   display: flex;
@@ -379,6 +386,7 @@ body {
   padding: 0 20px;
   text-align: justify;
   overflow-y: scroll;
+  font-family: 'Chakra Petch Medium';
   cursor: ns-resize;
   // overflow: hidden;
   max-height: 150px;
@@ -437,6 +445,7 @@ body {
 
 .birds-li__span {
   color: white;
+  font-family: 'Chakra Petch Medium';
 }
 
 .birds-li__fail {
@@ -476,6 +485,7 @@ body {
 .next-button {
   display: block;
   text-decoration: none;
+  font-family: 'Chakra Petch Bold';
   text-align: center;
   line-height: 3rem;
   width: 100%;

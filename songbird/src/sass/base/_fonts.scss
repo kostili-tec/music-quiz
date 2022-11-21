@@ -35,3 +35,43 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Chakra Petch Regular';
+  src: url('../assets/fonts/ChakraPetch-Regular.eot');
+  src: url('../assets/fonts/ChakraPetch-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../assets/fonts/ChakraPetch-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} 
+
+@font-face {
+  font-family: 'Chakra Petch Bold';
+  src: url('../assets/fonts/ChakraPetch-Bold.eot');
+  src: url('../assets/fonts/ChakraPetch-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../assets/fonts/ChakraPetch-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Chakra Petch Italic';
+  src: url('../assets/fonts/ChakraPetch-Italic.eot');
+  src: url('../assets/fonts/ChakraPetch-Italic.eot?#iefix') format('embedded-opentype'),
+      url('../assets/fonts/ChakraPetch-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Chakra Petch Medium';
+  src: url('../assets/fonts/ChakraPetch-Medium.eot');
+  src: url('../assets/fonts/ChakraPetch-Medium.eot?#iefix') format('embedded-opentype'),
+      url('../assets/fonts/ChakraPetch-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+

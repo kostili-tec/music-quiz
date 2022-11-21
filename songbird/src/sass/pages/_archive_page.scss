@@ -62,6 +62,7 @@
 .archive-select {
   background: rgba(0, 0, 0, 0.5);
   border: none;
+  font-family: 'Chakra Petch Bold';
   &::-webkit-scrollbar {
     width: 0.5rem;
   }    
@@ -86,6 +87,7 @@
   width: 760px;
   padding: 1rem;
   text-align: justify;
+  font-family: 'Chakra Petch Medium';
   border: 1px solid rgba(255, 255, 255, 0.329);
   height: 130px;
   overflow: hidden;
