@@ -2,15 +2,15 @@ import {
   saveCurrentRandomObj,
   getRandomMeme,
   createNewAudio,
-  createPickedAudio, 
+  createPickedAudio,
   fillProgress,
   playButtonEvent,
   renderNextPage,
   checkAnswer,
   handleInputChange,
-  handleInputVolumeChange
+  handleInputVolumeChange,
 } from '../../controller/control';
-import { currentBirdObj, currentSongObj } from '../../store/store';
+import { currentSongObj } from '../../store/store';
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -43,7 +43,7 @@ const createTriangularCover = (fullObj) => {
     img.src = el.image;
     img.setAttribute('data-id', el.id);
     coverCont.append(img);
-  })
+  });
   return coverCont;
 };
 
@@ -55,19 +55,17 @@ export const createCover = (currentObj) => {
   img.src = currentObj.image;
   coverCont.append(img);
   return coverCont;
-}
+};
 
 export const createPlayer = (currentObj, fullObj, additionClass) => {
-  console.log(currentSongObj.currentSong);
-  console.log(currentSongObj.currentObj);
   const playerContainer = document.createElement('div');
   playerContainer.classList.add('player-container', `player-container__${additionClass}`);
 
-  const cover = createTriangularCover(fullObj);  
+  const cover = createTriangularCover(fullObj);
 
   const winCover = document.createElement('img');
   winCover.classList.add('win-cover');
-  winCover.src = currentObj.image; 
+  winCover.src = currentObj.image;
 
   cover.append(winCover);
 
@@ -161,7 +159,7 @@ export const createPickedSong = (id) => {
   const obj = currentSongObj.currentObj[id];
   const currentId = id--;
   const playerContainer = document.createElement('div');
-  playerContainer.classList.add('player-container', `player-container__down`);
+  playerContainer.classList.add('player-container', 'player-container__down');
   const cover = createCover(obj);
 
   const rightContainer = document.createElement('div');
@@ -247,7 +245,7 @@ export const createPickedSong = (id) => {
 
   playerContainer.append(cover, rightContainer);
   return playerContainer;
-}
+};
 
 const createLeftContainer = (storeObj) => {
   const leftContainer = document.createElement('div');
@@ -291,7 +289,7 @@ export const addDescription = (id) => {
   description.textContent = currentSongObj.currentObj[id].descriptionEn;
   description.classList.add('description-song');
   return description;
-}
+};
 
 const createChoseContainer = (storeObj, memeSrc) => {
   const choseContainer = document.createElement('div');
@@ -322,7 +320,6 @@ export const createGame = (storeObj, memeObj, mainId = 'start') => {
   const mediaContainer = createPlayer(currentSongObj.currentSong, storeObj, 'up');
   const choseCont = createChoseContainer(storeObj, randomMemeSrc);
   const nextButton = createNextButton();
-  console.log(storeObj);
   main.append(navContainer, mediaContainer, choseCont, nextButton);
   document.body.append(main);
   return main;

@@ -1,4 +1,6 @@
-import { scoreObj, resetScore, songsObj, currentSongsObj, currentSongObj, memesObj } from '../store/store';
+import {
+  scoreObj, resetScore, songsObj, currentSongObj, memesObj,
+} from '../store/store';
 import { createGame, createPickedSong, addDescription } from '../pages/game/gamePage';
 import { createStartHeader, createGameHeader } from '../components/header';
 import { createWelcome } from '../pages/start/startPage';
@@ -15,8 +17,7 @@ export const saveCurrentRandomObj = (storeObj) => {
 
 export const getRandomMeme = (memeObj) => {
   const keys = Object.keys(memeObj);
-  console.log(memeObj[keys[ keys.length * Math.random() << 0]]);
-  return memeObj[keys[ keys.length * Math.random() << 0]];
+  return memeObj[keys[keys.length * Math.random() << 0]];
 };
 
 export const handleInputChange = (parentObj, e) => {
@@ -34,13 +35,13 @@ export const handleInputChange = (parentObj, e) => {
 };
 
 export const handleInputVolumeChange = (audioEl, e) => {
-  let { target } = e;
+  const { target } = e;
   const { min } = target;
   const { max } = target;
   const val = target.value;
   audioEl.volume = Number(target.value / 100);
   target.style.backgroundSize = `${(val - min) * 100 / (max - min)}% 100%`;
-}
+};
 
 export const fillProgress = (parentObj, e) => {
   const audio = e.target;
@@ -73,15 +74,13 @@ export const fillProgress = (parentObj, e) => {
     secsFull = `0${secsFull}`;
   }
 
-  if (audio.readyState === 4) {   // костыль
-    lengthTime.textContent = `${minsFull}:${secsFull}`;  
+  if (audio.readyState === 4) { // костыль
+    lengthTime.textContent = `${minsFull}:${secsFull}`;
   }
-
 };
 
 export const updateProgress = (e) => {
   const audio = document.querySelector('.audio');
-  console.log((e.offsetX / e.target.clientWidth) * audio.duration);
   audio.currentTime = (e.offsetX / e.target.clientWidth) * audio.duration;
 };
 
@@ -101,7 +100,7 @@ export const createPickedAudio = (obj) => {
   audio.src = obj.audio;
   audio.volume = 0.5;
   return audio;
-}
+};
 
 export const playButtonEvent = (button, audioEl) => {
   let isPlayed = false;
@@ -133,15 +132,15 @@ export const backToMainPage = () => {
   const main = createWelcome();
   const footer = createFooter();
   document.body.append(header, main, footer);
-}
+};
 
 const highlightCategory = (number) => {
   const li = document.querySelectorAll('.nav__li');
   li[number].classList.add('highlight-box');
   li[number].lastChild.classList.add('li-bg__active');
-}
+};
 
-let numberPage = -1;  // магические числа которые я боюсь трогать
+let numberPage = -1; // магические числа которые я боюсь трогать
 
 let numberRenderedPage = 0;
 
@@ -151,7 +150,6 @@ export const renderNextPage = (nextButton) => {
     highlightCategory(numberRenderedPage);
     numberRenderedPage++;
     const { hash } = window.location;
-    console.log(hash);
     nextButton.href = `#${pages[numberRenderedPage]}`;
   });
 };
@@ -164,36 +162,33 @@ export const hashChangeEvent = () => {
     const main = document.querySelector('.main-game');
     const hash = window.location.hash.slice(1);
     const footer111 = createFooter();
-    console.log(window.location.hash);
     if (hash !== 'main') {
       numberPage++;
-      console.log(numberPage);
       isAnswered = false;
     } else {
       numberPage = -1;
-      numberRenderedPage = 0
-      console.log(numberPage);
-    }    
+      numberRenderedPage = 0;
+    }
     switch (hash) {
-      case 'main': 
+      case 'main':
         nextObj = songsObj.classic;
         currentSongObj.currentObj = songsObj.classic;
         backToMainPage();
         resetScore();
         break;
-      case 'archive': 
+      case 'archive':
         document.body.replaceChildren();
         const archiveHeader = createStartHeader();
-        const archiveMain =  createArchivePage();
+        const archiveMain = createArchivePage();
         const archiveBg = document.createElement('div');
         archiveBg.classList.add('game-bg');
-        document.body.append(archiveHeader ,archiveBg, archiveMain, footer111);
+        document.body.append(archiveHeader, archiveBg, archiveMain, footer111);
         break;
       case 'start':
         resetScore();
         nextObj = songsObj.classic;
         nextMemeObj = memesObj.classic;
-        currentSongObj.currentObj  = songsObj.classic;
+        currentSongObj.currentObj = songsObj.classic;
         document.body.replaceChildren();
         const header = createGameHeader();
         const bg = document.createElement('div');
@@ -206,7 +201,7 @@ export const hashChangeEvent = () => {
       case 'thrash':
         nextObj = songsObj.thrash;
         nextMemeObj = memesObj.thrash;
-        currentSongObj.currentObj  = songsObj.thrash;
+        currentSongObj.currentObj = songsObj.thrash;
         nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
         highlightCategory(numberPage);
@@ -229,7 +224,7 @@ export const hashChangeEvent = () => {
         break;
       case 'nu':
         nextObj = songsObj.nu;
-        currentSongObj.currentObj  = songsObj.nu;
+        currentSongObj.currentObj = songsObj.nu;
         nextMemeObj = memesObj.nu;
         nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
@@ -237,7 +232,7 @@ export const hashChangeEvent = () => {
         break;
       case 'progressive':
         nextObj = songsObj.progressive;
-        currentSongObj.currentObj  = songsObj.progressive;
+        currentSongObj.currentObj = songsObj.progressive;
         nextMemeObj = memesObj.progressive;
         nextMain = createGame(nextObj, nextMemeObj);
         main.replaceWith(nextMain);
@@ -257,11 +252,10 @@ export const hashChangeEvent = () => {
         const footerRes = createFooter();
         document.body.append(resultsEl, footerRes);
         numberPage = -1;
-        numberRenderedPage = 0
+        numberRenderedPage = 0;
     }
   });
 };
-
 
 const enableNextButton = () => {
   const nextButton = document.querySelector('.next-button');
@@ -325,12 +319,12 @@ const replaceMainMediaContainer = () => {
   covers.forEach((cover, ind) => {
     cover.addEventListener('animationend', (e) => {
       winCover.classList.add('win-cover__show');
-      e.target.classList.remove(`anim${ind+1}`);
+      e.target.classList.remove(`anim${ind + 1}`);
       e.target.classList.add('hide-cover');
       showName();
-    })
-    cover.classList.add(`anim${ind+1}`, 'hide-cover');
-  })
+    });
+    cover.classList.add(`anim${ind + 1}`, 'hide-cover');
+  });
 };
 
 const newDownMediaContainer = (id) => {
@@ -342,8 +336,6 @@ const newDownMediaContainer = (id) => {
   downMedia.replaceChildren();
   downMedia.append(newMediaContainer, description);
 };
-
-
 
 export const checkAnswer = (e) => {
   const { target } = e;
@@ -371,14 +363,13 @@ export const checkAnswer = (e) => {
         reduceScore(liEl);
         playAudioWhenFail();
       }
-    } 
+    }
     newDownMediaContainer(dataId - 1);
   }
 };
 
-
 export const changeUrlOnLoad = () => {
   window.addEventListener('load', () => {
     window.location.hash = '#main';
-  })
-}
+  });
+};

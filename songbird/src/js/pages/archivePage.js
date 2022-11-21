@@ -157,11 +157,11 @@ export const createArchivePage = () => {
   audioEvent(audioEl);
 
   // allControl.append(audioEl, controlContainer, selectEl);
-  
+
   const pDescription = document.createElement('p');
   pDescription.classList.add('description', 'archive-description');
   pDescription.textContent = fullArrSongs[0].descriptionEn;
-  
+
   // audioPlayer.append(allControl, pDescription);
   audioPlayer.append(audioEl, controlContainer, selectEl);
   main.append(audioPlayer, pDescription);
