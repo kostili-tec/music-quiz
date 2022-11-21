@@ -6,6 +6,8 @@ import { createFooter } from '../components/footer';
 import { createResultsPage } from '../pages/result/resultsPage';
 import { createArchivePage } from '../pages/archivePage';
 
+let isAnswered = false;
+
 export const saveCurrentRandomObj = (storeObj) => {
   const randomIndex = Math.floor(Math.random() * (storeObj.length));
   Object.assign(currentSongObj.currentSong, storeObj[randomIndex]);
@@ -166,6 +168,7 @@ export const hashChangeEvent = () => {
     if (hash !== 'main') {
       numberPage++;
       console.log(numberPage);
+      isAnswered = false;
     } else {
       numberPage = -1;
       numberRenderedPage = 0
@@ -340,6 +343,8 @@ const newDownMediaContainer = (id) => {
   downMedia.append(newMediaContainer, description);
 };
 
+
+
 export const checkAnswer = (e) => {
   const { target } = e;
   const liEl = target.closest('.birds-li');
@@ -348,22 +353,25 @@ export const checkAnswer = (e) => {
 
   if (liEl) {
     const dataId = liEl.getAttribute('data-id');
-    if (dataId === audioId) {
-      liEl.classList.add('birds-li__win');
-      liEl.firstChild.classList.add('span-cyrcle__win');
-      // turnOffList(dataId);
-      saveScore(liEl);
-      enableNextButton();
-      playAudioWhenWin();
-      replaceMainMediaContainer();
-      showName();
-      // newDownMediaContainer();
-    } else {
-      // liEl.classList.add('birds-li__fail');
-      liEl.firstChild.classList.add('span-cyrcle__fail');
-      reduceScore(liEl);
-      playAudioWhenFail();
-    }
+    if (isAnswered === false) {
+      if (dataId === audioId) {
+        liEl.classList.add('birds-li__win');
+        liEl.firstChild.classList.add('span-cyrcle__win');
+        // turnOffList(dataId);
+        saveScore(liEl);
+        enableNextButton();
+        playAudioWhenWin();
+        replaceMainMediaContainer();
+        showName();
+        isAnswered = true;
+        // newDownMediaContainer();
+      } else {
+        // liEl.classList.add('birds-li__fail');
+        liEl.firstChild.classList.add('span-cyrcle__fail');
+        reduceScore(liEl);
+        playAudioWhenFail();
+      }
+    } 
     newDownMediaContainer(dataId - 1);
   }
 };
