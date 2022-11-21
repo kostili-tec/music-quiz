@@ -81,7 +81,7 @@ const songsData = [
       descriptionEn: '"The Thing That Should Not Be" was inspired by the Cthulhu Mythos created by famed horror writer H.P. Lovecraft, with notable direct references to The Shadow over Innsmouth and to Cthulhu himself, who is the subject matter of the song\'s chorus. It is considered the heaviest track on the album, with the main riff emulating a beast dragging itself into the sea. The Black Sabbath-influenced guitars are down-tuned, creating slow and moody ambience.',
       descriptionRu: 'Сюжет песни навеян произведениями Г. Ф. Лавкрафта о Ктулху и в частности рассказом «Тень над Иннсмутом», главный герой которого борется против потусторонних сил[31]. Она считается самой тяжёлой композицией альбома. Согласно замыслу музыкантов, её основной рифф должен передавать рёв чудовища, ползущего к морю. Звучание песни — пониженный гитарный строй, создающий тягучую и депрессивную атмосферу — отражает влияние музыки Black Sabbath',
       image: './copies/playlist/thrash/cover/master_of_puppets.jpg',
-      audio: './copies/playlist/thrash/metallica_-_battery_.mp3',
+      audio: './copies/playlist/thrash/metallica_-_the_thing_that_should_not_be.mp3',
     },
     {
       id: 4,
