@@ -399,9 +399,8 @@ export const audioEventGame = (audioEl, buttonEl) => {
     audioEl.addEventListener('play', () => {
       if (audioEl.id === 'audio__up') {
         const audioDown = document.querySelector('#audio__down');
-        console.log(audioDown);
         if (audioDown !== null && !audioDown.paused) {        
-          audioDown.pause();          
+          audioDown.pause();
         }
       }
       if (audioEl.id === 'audio__down') {
