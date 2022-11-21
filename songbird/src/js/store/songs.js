@@ -206,7 +206,7 @@ const songsData = [
     },
     {
       id: 5,
-      name: 'Distuber - Stricken',
+      name: 'Disturbed - Stricken',
       species: '',
       descriptionEn: '"Stricken" is a song by the American heavy metal band Disturbed. The song was released on July 25, 2005, as the second single from their third studio album Ten Thousand Fists. "Stricken" was certified gold in the United States by the Recording Industry Association of America on August 18, 2008, for selling 500,000 copies. It is one of the first of Disturbed\'s songs to include a guitar solo.',
       descriptionRu: '«Stricken» — сингл американской рок-группы Disturbed. Он был выпущен 25 июля 2005 года. Это второй по счёту сингл с третьего альбома коллектива — Ten Thousand Fists. «Stricken» удостоился золотого статуса в США 18 августа 2008 года, продав 500 000 копий. Это одна из первых композиций группы, где появилось гитарное соло',
