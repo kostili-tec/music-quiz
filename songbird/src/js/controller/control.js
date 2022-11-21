@@ -349,16 +349,15 @@ export const checkAnswer = (e) => {
       if (dataId === audioId) {
         liEl.classList.add('birds-li__win');
         liEl.firstChild.classList.add('span-cyrcle__win');
-        // turnOffList(dataId);
         saveScore(liEl);
         enableNextButton();
         playAudioWhenWin();
         replaceMainMediaContainer();
         showName();
         isAnswered = true;
-        // newDownMediaContainer();
+        console.log(audio);
+        audio.pause();
       } else {
-        // liEl.classList.add('birds-li__fail');
         liEl.firstChild.classList.add('span-cyrcle__fail');
         reduceScore(liEl);
         playAudioWhenFail();
