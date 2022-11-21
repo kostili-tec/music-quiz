@@ -119,9 +119,43 @@
   font-family:'Black Ops One';
   font-size: 2rem;
   color: rgba(255, 255, 255, 0.5);
+  margin-right: 3rem;
 }
 
 .footer-course img {
   width: 152px;
   height: 55px;
+}
+
+@media only screen and (max-width : 768px) { 
+  .logo-h1 {
+    font-size: 4rem;
+  }
+  .logo-h2 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width : 566px) { 
+  .logo-h1 {
+    font-size: 2rem;
+  }
+  .logo-h2 {
+    font-size: 1.5rem;
+  }
+  .button {
+    font-size: 1.5rem;
+    width: 9rem;
+    height: 3rem;
+    line-height: 3rem;
+  }
+  .footer-author, .footer-date { 
+    font-size: 1rem;
+  }
+  .footer-date {
+    margin-right: 1rem;
+  }
+  .footer-course > img {
+    width: 87px;
+  }
 }

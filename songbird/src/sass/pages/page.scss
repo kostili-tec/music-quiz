@@ -17,6 +17,7 @@ body {
   z-index: 2;
   position: relative;
   height: 10vh;
+  padding: 0 1rem;
 }
 .game-header .logo-h1 {
   font-size: 2.5rem;
@@ -56,8 +57,8 @@ body {
   justify-content: space-between;
   list-style: none;
   padding: 0;
-  // background-color: rgb(0, 126, 84);
   border-radius: 5px;
+  margin-left: 1rem;
   & li {
     flex: auto;
     text-align: center;
@@ -167,8 +168,8 @@ body {
 }
 
 .cover-img__full {
-  width: 158px;
-  height: 158px;
+  width: 100%;
+  // height: 158px;
 }
 
 @keyframes anim-img1 {
@@ -497,4 +498,71 @@ body {
 .disable-link {
   background-color: #303030;
   pointer-events: none;
+}
+
+@media only screen and (max-width : 850px) { 
+  .main-game {
+    height: auto;
+  }
+  .game-bg {
+    position: fixed;
+    height: 99vh;
+  }
+  .nav-birds__ul {
+    flex-wrap: wrap;
+    gap: 0.8rem 0;
+  }
+  .chose-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    height: auto;
+  }
+  .chose-container__left, .chose-container__right {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width : 566px) { 
+  .player-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .cover-container {
+    width: 158px;
+    align-self: center;
+  }
+  .cover-container__full {
+    align-self: center;
+
+  }
+  .name-song__h3 {
+   font-size: 1.5rem;
+   text-align: center;
+  }
+}
+
+@media only screen and (max-width : 566px) { 
+  .nav-birds__ul {
+
+  }
+  .nav-birds__ul li {
+    width: 8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width : 425px) { 
+  .game-header .logo-h1 {
+    font-size: 2.0rem;
+  }
+  .game-header .logo-h2 {
+    font-size: 1.0rem;
+  }
+}
+@media only screen and (max-width : 375px) { 
+  .game-header .logo-h1 {
+    font-size: 1.5rem;
+  }
 }

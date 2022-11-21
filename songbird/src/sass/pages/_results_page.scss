@@ -47,3 +47,15 @@
 .button-result {
   width: 130px;
 }
+
+@media only screen and (max-width : 1048px) { 
+  .message-container {
+    width: 76vw;
+  }
+}
+
+@media only screen and (max-width : 566px) {
+  .p-results {
+    font-size: 1.5rem;
+  }
+ }
