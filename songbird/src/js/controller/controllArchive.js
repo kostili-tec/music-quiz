@@ -13,6 +13,7 @@ export const nextButtonEvent = (butttonEl, songsArr) => {
     const cover = document.querySelector('.cover-img__full');
     const selectEl = document.querySelector('.archive-select');
     const audioEl = document.querySelector('.audio');
+    const descr = document.querySelector('.archive-description');
     audioEl.pause();
     let nextValue = ++selectEl.value;
     if (nextValue >= songsArr.length) {
@@ -22,6 +23,7 @@ export const nextButtonEvent = (butttonEl, songsArr) => {
     const currentSong = songsArr[nextValue];
     audioEl.src = currentSong.audio;
     cover.src = currentSong.image;
+    descr.textContent = currentSong.descriptionEn;
     audioEl.play();
   });
 };
@@ -31,6 +33,7 @@ export const prevButtonEvent = (buttonEl, songsArr) => {
     const cover = document.querySelector('.cover-img__full');
     const selectEl = document.querySelector('.archive-select');
     const audioEl = document.querySelector('.audio');
+    const descr = document.querySelector('.archive-description');
     audioEl.pause();
     let prevValue = --selectEl.value;
     if (prevValue <= -1) {
@@ -40,6 +43,8 @@ export const prevButtonEvent = (buttonEl, songsArr) => {
     const currentSong = songsArr[prevValue];
     audioEl.src = currentSong.audio;
     cover.src = currentSong.image;
+    descr.textContent = currentSong.descriptionEn;
+    
     audioEl.play();
   });
 };
@@ -61,10 +66,12 @@ export const selectEvent = (selectEl, audioEl, arrSongs) => {
     const currentSong = arrSongs[Number(selectEl.value)];
     selectEl.selected = true;
     const cover = document.querySelector('.cover-img__full');
+    const descr = document.querySelector('.archive-description');
     audioEl.pause();
     audioEl.src = currentSong.audio;
     audioEl.play();
     cover.src = currentSong.image;
+    descr.textContent = currentSong.descriptionEn;
   });
 };
 
