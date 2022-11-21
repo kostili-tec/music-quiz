@@ -91,7 +91,7 @@ export const createPlayer = (currentObj, fullObj, additionClass) => {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg', 'audio-svg');
   svg.id = 'audio-stop';
-  svg.innerHTML = '<use xlink:href="./copies/sprite.svg#stop-button"></use>';
+  svg.innerHTML = '<use xlink:href="./copies/sprite.svg#play-button"></use>';
 
   playButton.append(svg);
 
@@ -183,7 +183,7 @@ export const createPickedSong = (id) => {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('icon-svg', 'audio-svg');
   svg.id = 'audio-stop';
-  svg.innerHTML = '<use xlink:href="./copies/sprite.svg#stop-button"></use>';
+  svg.innerHTML = '<use xlink:href="./copies/sprite.svg#play-button"></use>';
 
   playButton.append(svg);
 
