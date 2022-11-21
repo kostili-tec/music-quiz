@@ -92,6 +92,6 @@ export const resultGif = {
   }, // 26 - 29
   seniorPomidor: {
     gif: 'https://media.tenor.com/jCE4G3sDubAAAAAC/hair-flip-rock-band.gif',
-    message: 'Senior Pomidor',
+    message: 'Average Metal Enjoyer',
   }, // 30+
 };
