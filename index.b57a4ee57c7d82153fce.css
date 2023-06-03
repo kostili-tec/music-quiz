@@ -1,0 +1,351 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10+.
+ */
+
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+
+[hidden] {
+  display: none;
+}
+
+@font-face{font-family:"Ruslan Display";src:url("assets/Ruslan%20Display.eot");src:url("assets/Ruslan%20Display.eot?#iefix") format("embedded-opentype"),url("assets/Ruslan%20Display.woff2") format("woff2"),url("assets/Ruslan%20Display.woff") format("woff"),url("assets/Ruslan%20Display.svg#Ruslan Display") format("svg");font-weight:400;font-style:normal;font-stretch:normal;unicode-range:U+0020-00FE}@font-face{font-family:"Black Ops One";src:url("assets/Black%20Ops%20One%20Regular.eot");src:url("assets/Black%20Ops%20One%20Regular.eot?#iefix") format("embedded-opentype"),url("assets/Black%20Ops%20One%20Regular.woff2") format("woff2"),url("assets/Black%20Ops%20One%20Regular.woff") format("woff"),url("assets/Black%20Ops%20One%20Regular.svg#Black Ops One Regular") format("svg");font-weight:400;font-style:normal;font-stretch:normal;unicode-range:U+0020-00FE}@font-face{font-family:"Rock Salt";src:url(assets/RockSalt-Regular.eot);src:url(assets/RockSalt-Regular.eot?#iefix) format("embedded-opentype"),url(assets/RockSalt-Regular.woff2) format("woff2"),url(assets/RockSalt-Regular.woff) format("woff");font-weight:normal;font-style:normal;font-display:swap}@font-face{font-family:"Chakra Petch Regular";src:url(assets/ChakraPetch-Regular.eot);src:url(assets/ChakraPetch-Regular.eot?#iefix) format("embedded-opentype"),url(assets/ChakraPetch-Regular.ttf) format("truetype");font-weight:normal;font-style:normal;font-display:swap}@font-face{font-family:"Chakra Petch Bold";src:url(assets/ChakraPetch-Bold.eot);src:url(assets/ChakraPetch-Bold.eot?#iefix) format("embedded-opentype"),url(assets/ChakraPetch-Bold.ttf) format("truetype");font-weight:bold;font-style:normal;font-display:swap}@font-face{font-family:"Chakra Petch Italic";src:url(assets/ChakraPetch-Italic.eot);src:url(assets/ChakraPetch-Italic.eot?#iefix) format("embedded-opentype"),url(assets/ChakraPetch-Italic.ttf) format("truetype");font-weight:normal;font-style:italic;font-display:swap}@font-face{font-family:"Chakra Petch Medium";src:url(assets/ChakraPetch-Medium.eot);src:url(assets/ChakraPetch-Medium.eot?#iefix) format("embedded-opentype"),url(assets/ChakraPetch-Medium.ttf) format("truetype");font-weight:500;font-style:normal;font-display:swap}.remove__margin,.player-container__down{margin:0}.player-container__down{gap:20px;padding:10px 0}.font__H3{font-size:1.2rem;margin-bottom:.5rem}.font__H4{font-size:1rem;font-weight:400;margin-bottom:.5rem}.input-progress{-webkit-appearance:none;width:100%;height:5px;background:rgba(255,255,255,.6);background-image:linear-gradient(rgb(183, 0, 0), rgb(183, 0, 0));background-size:0% 100%;background-repeat:no-repeat;border-radius:5px;border:none}.input-progress::-webkit-slider-thumb{-webkit-appearance:none;height:15px;width:15px;border-radius:50%;background:#b70000;cursor:ew-resize;box-shadow:0 0 2px 0 #555}.input-progress::-moz-range-thumb{-webkit-appearance:none;height:15px;width:15px;border-radius:50%;background:#b70000;cursor:ew-resize;box-shadow:0 0 2px 0 #555}.input-progress::-ms-thumb{-webkit-appearance:none;height:15px;width:15px;border-radius:50%;background:#b70000;cursor:ew-resize;box-shadow:0 0 2px 0 #555}.input-progress::-webkit-slider-runnable-track{-webkit-appearance:none;box-shadow:none;border:none;border-radius:5px;background:rgba(0,0,0,0);cursor:pointer}.input-progress::-moz-range-track{-webkit-appearance:none;box-shadow:none;border:none;border-radius:5px;background:rgba(0,0,0,0);cursor:pointer}.input-progress::-ms-track{-webkit-appearance:none;box-shadow:none;border:none;border-radius:5px;background:rgba(0,0,0,0);cursor:pointer}#range-progress{margin-top:1rem}#volume-progress{margin-left:1rem;width:100%;background-size:50% 100%}*{box-sizing:border-box}.start-bg{background-image:url(assets/dimebag-darrell-background.jpg);background-size:cover;background-position:center center;filter:blur(10px);position:absolute;z-index:1;width:100vw;height:89vh;top:0}.start-header{z-index:2;position:relative;height:10vh}.logo-container{margin-left:1rem}.logo-link{text-decoration:none}.logo-h1{font-family:"Black Ops One";color:red;font-size:5rem;font-weight:400;font-style:normal;margin:0}.logo-h2{font-family:"Ruslan Display";font-weight:400;font-style:normal;font-size:3rem;margin:0;color:#fff}.start-main{height:80vh;display:flex;justify-content:center;z-index:2}.nav-start{display:flex;flex-direction:column;justify-content:space-around;z-index:2}.button{text-decoration:none;color:#fff;font-family:"Chakra Petch Bold";font-size:2rem;text-align:center;border:1px solid #fff;border-radius:5px;width:12rem;height:4rem;line-height:4rem;background-color:rgba(0,0,0,.5)}.button:hover{background-color:rgba(255,255,255,.527)}.disclaimer-button{cursor:pointer}.disclaimer-container{position:absolute;z-index:5;width:80%;background-color:rgba(0,0,0,.781);border:1px solid #fff;top:50%;padding:1rem}.disclaimer-container p{font-size:1.5rem;font-family:"Chakra Petch Medium"}.footer{position:relative;overflow:hidden;width:100%;height:10vh;display:flex;justify-content:space-between;align-items:center;background-image:linear-gradient(rgba(119, 119, 119, 0.8), rgba(0, 0, 0, 0.5)),url(assets/footer_bg.jpg);background-size:cover;background-position:center;padding:1.5rem 1rem 0}.footer-blur{position:absolute;z-index:2;top:-10px;left:-20px;height:4vh;width:120vw;background:#000;filter:blur(15px)}.footer-author{text-decoration:none;font-size:2rem;color:rgba(255,255,255,.5);font-family:"Black Ops One"}.footer-author:hover{color:#fff}.footer-date{font-family:"Black Ops One";font-size:2rem;color:rgba(255,255,255,.5);margin-right:3rem}.footer-course img{width:152px;height:55px}@media only screen and (max-width: 768px){.logo-h1{font-size:4rem}.logo-h2{font-size:2rem}}@media only screen and (max-width: 566px){.logo-h1{font-size:2rem}.logo-h2{font-size:1.5rem}.button{font-size:1.5rem;width:9rem;height:3rem;line-height:3rem}.footer-author,.footer-date{font-size:1rem}.footer-date{margin-right:1rem}.footer-course>img{width:87px}}*{box-sizing:border-box}body{font-family:"Lato",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";background-color:#222;color:#fff}.game-header{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;z-index:2;position:relative;height:10vh;padding:0 1rem}.game-header .logo-h1{font-size:2.5rem}.game-header .logo-h2{font-size:1.5rem}.game-header h5{font-family:"Chakra Petch Medium"}.link-header{text-decoration:none;color:#fff}.game-bg{background-image:url(assets/game-bg.jpg);background-size:cover;background-position:center center;filter:blur(10px);position:absolute;z-index:0;width:100vw;height:89vh;top:0}.main-game{margin:0 auto;max-width:1200px;z-index:2;position:relative;height:78vh}.nav-birds__ul{display:flex;justify-content:space-between;list-style:none;padding:0;border-radius:5px;margin-left:1rem}.nav-birds__ul li{flex:auto;text-align:center;position:relative;width:9.5rem;flex-grow:1;margin-right:1rem}.nav-birds__ul li span{font-family:"Rock Salt";padding:.5rem .75rem;position:relative;display:block;z-index:2}@keyframes append-animate{from{transform:scale(1)}to{transform:scale(1.1)}}.highlight-box{animation:append-animate 1s linear forwards}.nav__li-active{transform:scale(1.1)}.li-bg{width:100%;height:100%;background:#b70000;background-size:cover;background-position:center center;background-position-x:center;background-position-y:center;position:absolute;top:0;z-index:1;transform:skewX(-20deg)}.li-bg__active{background:#f30000}.player-container{display:flex;flex-direction:row;background-color:rgba(0,0,0,.478);padding:20px;height:200px;gap:40px;margin-top:1.5rem;border:1px solid gray}.player-container__down{margin-top:0;border:none}.right-container{flex:auto;display:flex;flex-direction:column}.birds-img{width:158px;border-radius:5px;filter:grayscale(1) contrast(150%)}.cover-container{display:grid;gap:10px;grid-template-columns:auto 0 auto;place-items:center;position:relative}.cover-container__full{width:158px;height:158px}.cover-img__full{width:100%}@keyframes anim-img1{100%{transform:translate(10px, 10px)}}@keyframes anim-img2{from{transform:translate(0px, 0px)}to{transform:translate(0px, 10px)}}@keyframes anim-img3{from{transform:translate(0px, 0px)}to{transform:translate(-10px, 10px)}}@keyframes anim-img4{from{transform:translate(0px, 0px)}to{transform:translate(-10px, -10px)}}@keyframes anim-img5{from{transform:translate(0px, 0px)}to{transform:translate(0px, -10px)}}@keyframes anim-img6{from{transform:translate(0px, 0px)}to{transform:translate(10px, -10px)}}@keyframes anim-opacity{0%{opacity:1}100%{opacity:0}}.hide-cover{animation:anim-opacity .3s ease-in .25s forwards}.anim1{animation:anim-img1 .3s ease-in-out 2 alternate}.anim2{animation:anim-img2 .3s ease-in-out 2 alternate}.anim3{animation:anim-img3 .3s ease-in-out 2 alternate}.anim6{animation:anim-img4 .3s ease-in-out 2 alternate}.anim5{animation:anim-img5 .3s ease-in-out 2 alternate}.anim4{animation:anim-img6 .3s ease-in-out 2 alternate}.cover-img{width:69px;aspect-ratio:1;object-fit:cover;transition:.35s;z-index:2}.cover-container>img:nth-child(1){clip-path:polygon(0 0, 50% 0, 100% 100%, 0 100%)}.cover-container>img:nth-child(2){clip-path:polygon(0 0, 100% 0, 50% 100%)}.cover-container>img:nth-child(3){clip-path:polygon(50% 0, 100% 0, 100% 100%, 0 100%)}.cover-container>img:nth-child(4){clip-path:polygon(0 0, 100% 0, 50% 100%, 0 100%)}.cover-container>img:nth-child(5){clip-path:polygon(50% 0, 100% 100%, 0% 100%)}.cover-container>img:nth-child(6){clip-path:polygon(0 0, 100% 0, 100% 100%, 50% 100%)}.win-cover{position:absolute;width:133px;transition:all .5s ease-in-out;transform:scale(0.5);opacity:0}.win-cover__show{opacity:1;transform:scale(1.2)}.right-container{display:flex}.name-song__h3{margin-top:0;margin-bottom:1rem;padding-bottom:1rem;font-weight:500;font-family:"Chakra Petch Bold";line-height:1.2;font-size:2rem;border-bottom:1px solid #555}.name-song__h3-second{font-size:1.3rem}.audio-container{display:flex;align-items:center;gap:20px}.play-button{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:40px;height:40px;border:2px solid;border-radius:50%;background-color:rgba(0,0,0,0);border-color:#c00;padding:0;cursor:pointer}.audio-svg{width:20px;height:20px;fill:#c00}#audio-stop{height:14px;width:14px}#audio-play{height:18px;width:18px;padding-left:2px}#audio-volume{width:20px;height:20px;fill:rgba(255,255,255,.692)}.progress-container{width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center}.volume-container{display:flex;align-items:center}.time-container{display:flex;justify-content:space-between;margin-top:1rem;width:100%}.time-container span{font-family:"Chakra Petch Bold"}.chose-container{display:flex;justify-content:space-between;margin-top:1.5rem;height:384px}.chose-container__left,.chose-container__right{width:49%;background-color:rgba(0,0,0,.7);border:1px solid gray;border-radius:5px;overflow:hidden;display:flex;flex-direction:column}.chose-container__right{padding:0}.description-song{padding:0 20px;text-align:justify;overflow-y:scroll;font-family:"Chakra Petch Medium";cursor:ns-resize;max-height:150px}.description-song::-webkit-scrollbar{width:.5rem}.description-song::-webkit-scrollbar-thumb{background-color:#a9a9a9;outline:1px solid #708090}.birds-ul{margin:0;padding:0;display:flex;flex-direction:column;justify-content:center;flex:1}.birds-li{display:flex;align-items:center;flex:1;list-style-position:inside;height:3rem;line-height:3rem;padding-left:1.5rem;border-bottom:1px solid gray;color:gray;cursor:pointer}.birds-li:last-child{border:none}.birds-li:hover{background-color:gray}.span-cyrcle{background:#616060;height:.7rem;width:.7rem;border-radius:50%;margin-right:1rem}.span-cyrcle__fail{background:#d60000}.span-cyrcle__win{background:#007e54}.birds-li__span{color:#fff;font-family:"Chakra Petch Medium"}.birds-li__fail{color:red;background-color:#222;cursor:auto;pointer-events:none}.birds-li__win{color:#007e54;cursor:auto}.birds-li__disable{background-color:#222;cursor:auto;pointer-events:none}.meme-container{max-height:384px}.meme-img{width:100%;max-height:384px}@keyframes fade-out{from{background-position-x:100%}to{background-position-x:0%}}.play-animation{animation:fade-out .5s ease-in-out forwards}.next-button{display:block;text-decoration:none;font-family:"Chakra Petch Bold";text-align:center;line-height:3rem;width:100%;height:3rem;color:#fff;background-repeat:no-repeat;background-size:200% 100%;background-image:linear-gradient(to right, rgb(183, 0, 0) 50%, transparent 50%);background-position-x:100%;transition:all .5s ease-out;border:1px solid gray;margin-top:1.5rem}.next-button:hover{transform:scale(1.03)}.disable-link{background-color:#303030;pointer-events:none}@media only screen and (max-width: 850px){.main-game{height:auto}.game-bg{position:fixed;height:99vh}.nav-birds__ul{flex-wrap:wrap;gap:.8rem 0}.chose-container{flex-direction:column;align-items:center;gap:1rem;height:auto}.chose-container__left,.chose-container__right{width:100%;height:auto}}@media only screen and (max-width: 566px){.player-container{flex-direction:column;height:auto}.cover-container{width:158px;align-self:center}.cover-container__full{align-self:center}.name-song__h3{font-size:1.5rem;text-align:center}}@media only screen and (max-width: 566px){.nav-birds__ul li{width:8rem;font-size:.9rem}}@media only screen and (max-width: 425px){.game-header .logo-h1{font-size:2rem}.game-header .logo-h2{font-size:1rem}}@media only screen and (max-width: 375px){.game-header .logo-h1{font-size:1.5rem}}@media only screen and (min-width: 850px)and (max-height: 960px){.chose-container{height:345px}}.results-main{height:90vh;display:flex;justify-content:center;align-items:center}.results-bg{background-image:url("assets/sunn_o)))-bg-corrected.webp");background-size:cover;background-position:center center;filter:blur(10px);position:absolute;z-index:1;width:100vw;height:89vh;top:0}.message-container{z-index:2;display:flex;flex-direction:column;align-items:center;border:2px solid rgba(255,255,255,.26);width:40vw;padding:1rem;background:rgba(0,0,0,.507)}.img-results{border:2px solid rgba(255,255,255,.26);width:100%}.p-results{font-size:2rem;font-family:"Chakra Petch Bold"}.button-container{width:100%;display:flex;justify-content:space-around}.button-result{width:130px}@media only screen and (max-width: 1048px){.message-container{width:76vw}}@media only screen and (max-width: 566px){.p-results{font-size:1.5rem}}.archive-main{display:flex;flex-direction:column;justify-content:center;align-items:center;height:80vh;z-index:2}.archive-player{display:flex;flex-direction:row;justify-content:center;gap:1rem;height:25rem;z-index:2;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.329);width:760px}.cover-container__archive{width:250px;height:250px}.control-container{width:400px;display:flex;flex-direction:column;justify-content:space-around;align-items:center;padding-left:1rem}.buttons-container{display:flex;flex-direction:row;flex-wrap:nowrap;gap:1rem}.player-button{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:40px;height:40px;border:2px solid;border-radius:50%;background-color:rgba(0,0,0,0);border-color:#c00;padding:0;cursor:pointer}.reverse-next{transform:rotate(180deg)}.archive-select{background:rgba(0,0,0,.5);border:none;font-family:"Chakra Petch Bold"}.archive-select::-webkit-scrollbar{width:.5rem}.archive-select::-webkit-scrollbar-thumb{background-color:#a9a9a9;outline:1px solid #708090}.archive-select>option{color:#fff}.all-controll{display:flex;flex-direction:row}.archive-description{z-index:2;background:rgba(0,0,0,.5);width:760px;padding:1rem;text-align:justify;font-family:"Chakra Petch Medium";border:1px solid rgba(255,255,255,.329);height:130px;overflow:hidden;overflow-y:scroll}.archive-description::-webkit-scrollbar{width:.5rem}.archive-description::-webkit-scrollbar-thumb{background-color:#a9a9a9;outline:1px solid #708090}@media only screen and (max-width: 868px){.archive-main{margin-top:4rem;height:auto}.archive-player{flex-direction:column;height:auto;width:79vw;align-items:center}.control-container{width:90%;gap:.6rem;padding-left:0}.archive-select{width:100%;text-align:center}.archive-description{width:79vw;height:auto}}@media only screen and (max-width: 566px){.archive-main{margin-top:0}}
